@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "AddPaySlip";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<section class="section">
+    <div class="section-body">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Add Pay Slip</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>Select Employee</p>
+                        <div class="form-group">
+                            <select id="EmployeesList" class="form-control " data-placeholder=" Select a Employee" style="width: 100%;">
+                                <option value="">Select Employee</option>
+                                <option value="Ajith">Ajith Kumar</option>
+                                <option value="Alex John">Alex John</option>
+                                <option value="Allie Grater">Allie Grater</option>
+                                <option value="Dhanesh Kumar">Dhanesh Kumar</option>
+                                <option value="Divakar Jayagopi">Divakar Jayagopi</option>
+                                <option value="Mukesh Kannan">Mukesh Kannan</option>
+                                <option value="Olive Yew">Olive Yew</option>
+                                <option value="Peg Legge">Peg Legge</option>
+                                <option value="Ramya Devaraj">Ramya Devaraj</option>
+                                <option value="Tamil Selvi">Tamil Selvi</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>Earnings</p>
+                                <span>Basic : </span> <input type="text" class="form-control" />
+                                <span>DA : </span> <input type="text" class="form-control" />
+                                <span>HRA : </span> <input type="text" class="form-control" />
+                                <span>Medical Allowances  : </span> <input type="text" class="form-control" />
+                                <span>Conveyance Charges : </span> <input type="text" class="form-control" />
+                                <span>Special Allowances  : </span> <input type="text" class="form-control" />
+                                <br />
+                                <p><b>Total Earnings :</b></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Deduction</p>
+                                <span>Income Tax : </span> <input type="text" class="form-control" />
+                                <span>Educational Cess : </span> <input type="text" class="form-control" />
+                                <span>LOP : </span> <input type="text" class="form-control" />
+                                <br />
+                                <p><b>Total Deduction :</b></p>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="col-md-12 row">
+                            <div class="col-md-6">
+                                <p><b>Net Pay : </b></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><b>85,000</b></p>
+                            </div>
+                        </div>
+                        <button class="btn btn-block btn-info AddEmployeePaySlip" type="button">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/assets/js/jquery.min.js"></script>
+<script src="~/App_Assests/js/payslip.js"></script>

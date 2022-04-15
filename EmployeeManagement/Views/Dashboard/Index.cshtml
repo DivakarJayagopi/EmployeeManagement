@@ -1,0 +1,316 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Session["IsAdmin"].ToString() == "1")
+{
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-12">
+                <div class="card card-statistic-2">
+                    <div class="card-stats">
+                        <div class="card-stats-title">
+                            Employee Statistics
+                        </div>
+                    </div>
+                    <div class="card-icon shadow-primary bg-primary">
+                        <i class="fas fa-solid fa-users"></i>
+                    </div>
+                    <div class="card-wrap">
+                        <div class="card-header">
+                            <h4>Total Employees</h4>
+                        </div>
+                        <div class="card-body">
+                            59
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12">
+                <div class="card card-statistic-2">
+                    <div class="card-stats">
+                        <div class="card-stats-title">
+                            Birthday Statistics
+                        </div>
+                    </div>
+                    <div class="card-icon shadow-primary bg-primary">
+                        <i class="fas fa-solid fa-gift"></i>
+                    </div>
+                    <div class="card-wrap">
+                        <div class="card-header">
+                            <h4>Today Birthday's</h4>
+                        </div>
+                        <div class="card-body">
+                            8
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12">
+                <div class="card card-statistic-2">
+                    <div class="card-stats">
+                        <div class="card-stats-title">
+                            Leave Statistics
+                        </div>
+                    </div>
+                    <div class="card-icon shadow-primary bg-primary">
+                        <i class="fas fa-solid fa-list-ol"></i> 
+                    </div>
+                    <div class="card-wrap">
+                        <div class="card-header">
+                            <h4>Today Leave</h4>
+                        </div>
+                        <div class="card-body">
+                            10
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12">
+                <div class="card card-statistic-2">
+                    <div class="card-stats">
+                        <div class="card-stats-title">
+                            Anniversary Statistics
+                        </div>
+                    </div>
+                    <div class="card-icon shadow-primary bg-primary">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <div class="card-wrap">
+                        <div class="card-header">
+                            <h4>Today Anniversary</h4>
+                        </div>
+                        <div class="card-body">
+                            2
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Today Anniversay Employees List</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive table-invoice">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Team</th>
+                                    <th>Role</th>
+                                    <th>Joinig Date</th>
+                                </tr>
+                                <tr>
+                                    <td>SFS0018</td>
+                                    <td class="font-weight-600">John Alex</td>
+                                    <td><div class="badge badge-warning">Development</div></td>
+                                    <td>Developer</td>
+                                    <td>
+                                        Aug 20, 1997
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>SFS0112</td>
+                                    <td class="font-weight-600">Ajith Kumar</td>
+                                    <td><div class="badge badge-success">Testing</div></td>
+                                    <td>Junior Tester</td>
+                                    <td>
+                                        Apr 30, 1992
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Employee Status</h4>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="employeeStatusPie" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Employee Status</h4>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="employeeStatusBar" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else
+{
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-12">
+                <div class="card card-statistic-2">
+                    <div class="card-stats">
+                        <div class="card-stats-title">
+                            Leave Statistics
+                        </div>
+                    </div>
+                    <div class="card-icon shadow-primary bg-primary">
+                        <i class="fas fa-archive"></i>
+                    </div>
+                    <div class="card-wrap">
+                        <div class="card-header">
+                            <h4>Available Leave</h4>
+                        </div>
+                        <div class="card-body">
+                            8
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12">
+                <div class="card card-statistic-2">
+                    <div class="card-stats">
+                        <div class="card-stats-title">
+                            Leave Statistics
+                        </div>
+                    </div>
+                    <div class="card-icon shadow-primary bg-primary">
+                        <i class="fas fa-solid fa-plane-departure"></i>
+                    </div>
+                    <div class="card-wrap">
+                        <div class="card-header">
+                            <h4>Leave Taken</h4>
+                        </div>
+                        <div class="card-body">
+                            2
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12">
+                <div class="card card-statistic-2">
+                    <div class="card-stats">
+                        <div class="card-stats-title">
+                            Birthday Statistics
+                        </div>
+                    </div>
+                    <div class="card-icon shadow-primary bg-primary">
+                        <i class="fas fa-solid fa-gift"></i>
+                    </div>
+                    <div class="card-wrap">
+                        <div class="card-header">
+                            <h4>Today Birthday's</h4>
+                        </div>
+                        <div class="card-body">
+                            10
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12">
+                <div class="card card-statistic-2">
+                    <div class="card-stats">
+                        <div class="card-stats-title">
+                            Anniversary Statistics
+                        </div>
+                    </div>
+                    <div class="card-icon shadow-primary bg-primary">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <div class="card-wrap">
+                        <div class="card-header">
+                            <h4>Today Anniversary</h4>
+                        </div>
+                        <div class="card-body">
+                            2
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Today Anniversay Employees List</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive table-invoice">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Team</th>
+                                    <th>Role</th>
+                                    <th>Joinig Date</th>
+                                </tr>
+                                <tr>
+                                    <td>SFS0018</td>
+                                    <td class="font-weight-600">John Alex</td>
+                                    <td><div class="badge badge-warning">Development</div></td>
+                                    <td>Developer</td>
+                                    <td>
+                                        Aug 20, 1997
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>SFS0112</td>
+                                    <td class="font-weight-600">Ajith Kumar</td>
+                                    <td><div class="badge badge-success">Testing</div></td>
+                                    <td>Junior Tester</td>
+                                    <td>
+                                        Apr 30, 1992
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Leave Status</h4>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="employeeStatusPieNormal" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Leave Status</h4>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="employeeStatusBarNormal" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+
+
+<script src="~/assets/js/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+
+<script>
+    var IsAdmin = @Session["IsAdmin"].ToString();
+</script>
+<script src="~/App_Assests/js/dashboard.js"></script>

@@ -1,0 +1,924 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\LENOVO\Documents\Publish\Others</_PublishTargetUrl>
+    <History>True|2022-04-03T19:32:23.0137247Z;True|2022-04-04T00:59:04.7286746+05:30;True|2022-04-04T00:50:48.4612168+05:30;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="App_Assests/css/custom.css">
+      <publishTime>04/03/2022 18:25:58</publishTime>
+    </File>
+    <File Include="App_Assests/js/account.js">
+      <publishTime>04/03/2022 18:09:26</publishTime>
+    </File>
+    <File Include="App_Assests/js/custom.js">
+      <publishTime>04/03/2022 18:38:05</publishTime>
+    </File>
+    <File Include="App_Assests/js/dashboard.js">
+      <publishTime>04/04/2022 00:17:04</publishTime>
+    </File>
+    <File Include="App_Assests/js/employee.js">
+      <publishTime>04/03/2022 23:23:48</publishTime>
+    </File>
+    <File Include="App_Assests/js/leave.js">
+      <publishTime>04/04/2022 00:58:37</publishTime>
+    </File>
+    <File Include="App_Assests/js/news.js">
+      <publishTime>04/03/2022 23:23:52</publishTime>
+    </File>
+    <File Include="App_Assests/js/payslip.js">
+      <publishTime>04/04/2022 00:41:09</publishTime>
+    </File>
+    <File Include="assets/css/components.css">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/css/components.css.map">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/css/custom.css">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/css/custom.css.map">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/css/jquery.dataTables.css">
+      <publishTime>04/03/2022 20:20:31</publishTime>
+    </File>
+    <File Include="assets/css/reverse.css">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/css/rtl.css">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/css/skins/reverse.css">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/css/skins/reverse.css.map">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/css/style.css">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/css/style.css.map">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/nunito-v9-latin-600.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/nunito-v9-latin-600.svg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/nunito-v9-latin-600.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/nunito-v9-latin-600.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/nunito-v9-latin-600.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/nunito-v9-latin-700.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/nunito-v9-latin-700.svg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/nunito-v9-latin-700.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/nunito-v9-latin-700.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/nunito-v9-latin-700.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/nunito-v9-latin-800.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/nunito-v9-latin-800.svg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/nunito-v9-latin-800.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/nunito-v9-latin-800.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/nunito-v9-latin-800.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/nunito-v9-latin-regular.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/nunito-v9-latin-regular.svg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/nunito-v9-latin-regular.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/nunito-v9-latin-regular.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/nunito-v9-latin-regular.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits-Without-Latin/Vazir-Black-FD-WOL.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits-Without-Latin/Vazir-Black-FD-WOL.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits-Without-Latin/Vazir-Black-FD-WOL.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits-Without-Latin/Vazir-Black-FD-WOL.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits-Without-Latin/Vazir-Bold-FD-WOL.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits-Without-Latin/Vazir-Bold-FD-WOL.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits-Without-Latin/Vazir-Bold-FD-WOL.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits-Without-Latin/Vazir-Bold-FD-WOL.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits-Without-Latin/Vazir-FD-WOL.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits-Without-Latin/Vazir-FD-WOL.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits-Without-Latin/Vazir-FD-WOL.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits-Without-Latin/Vazir-FD-WOL.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits-Without-Latin/Vazir-Light-FD-WOL.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits-Without-Latin/Vazir-Light-FD-WOL.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits-Without-Latin/Vazir-Light-FD-WOL.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits-Without-Latin/Vazir-Light-FD-WOL.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits-Without-Latin/Vazir-Medium-FD-WOL.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits-Without-Latin/Vazir-Medium-FD-WOL.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits-Without-Latin/Vazir-Medium-FD-WOL.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits-Without-Latin/Vazir-Medium-FD-WOL.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits-Without-Latin/Vazir-Thin-FD-WOL.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits-Without-Latin/Vazir-Thin-FD-WOL.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits-Without-Latin/Vazir-Thin-FD-WOL.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits-Without-Latin/Vazir-Thin-FD-WOL.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits/Vazir-Black-FD.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits/Vazir-Black-FD.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits/Vazir-Black-FD.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits/Vazir-Black-FD.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits/Vazir-Bold-FD.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits/Vazir-Bold-FD.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits/Vazir-Bold-FD.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits/Vazir-Bold-FD.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits/Vazir-FD.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits/Vazir-FD.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits/Vazir-FD.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits/Vazir-FD.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits/Vazir-Light-FD.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits/Vazir-Light-FD.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits/Vazir-Light-FD.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits/Vazir-Light-FD.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits/Vazir-Medium-FD.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits/Vazir-Medium-FD.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits/Vazir-Medium-FD.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits/Vazir-Medium-FD.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits/Vazir-Thin-FD.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits/Vazir-Thin-FD.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits/Vazir-Thin-FD.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Farsi-Digits/Vazir-Thin-FD.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/font-face.css">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/LICENSE">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/sample.png">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Vazir-Black.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Vazir-Black.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Vazir-Black.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Vazir-Black.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Vazir-Bold.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Vazir-Bold.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Vazir-Bold.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Vazir-Bold.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Vazir-Light.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Vazir-Light.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Vazir-Light.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Vazir-Light.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Vazir-Medium.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Vazir-Medium.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Vazir-Medium.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Vazir-Medium.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Vazir-Thin.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Vazir-Thin.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Vazir-Thin.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Vazir-Thin.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Vazir.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Vazir.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Vazir.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Vazir.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Without-Latin/Vazir-Black-WOL.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Without-Latin/Vazir-Black-WOL.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Without-Latin/Vazir-Black-WOL.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Without-Latin/Vazir-Black-WOL.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Without-Latin/Vazir-Bold-WOL.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Without-Latin/Vazir-Bold-WOL.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Without-Latin/Vazir-Bold-WOL.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Without-Latin/Vazir-Bold-WOL.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Without-Latin/Vazir-Light-WOL.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Without-Latin/Vazir-Light-WOL.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Without-Latin/Vazir-Light-WOL.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Without-Latin/Vazir-Light-WOL.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Without-Latin/Vazir-Medium-WOL.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Without-Latin/Vazir-Medium-WOL.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Without-Latin/Vazir-Medium-WOL.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Without-Latin/Vazir-Medium-WOL.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Without-Latin/Vazir-Thin-WOL.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Without-Latin/Vazir-Thin-WOL.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Without-Latin/Vazir-Thin-WOL.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Without-Latin/Vazir-Thin-WOL.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Without-Latin/Vazir-WOL.eot">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Without-Latin/Vazir-WOL.ttf">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Without-Latin/Vazir-WOL.woff">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/fonts/vazir/Without-Latin/Vazir-WOL.woff2">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/avatar/avatar-1.png">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/avatar/avatar-2.png">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/avatar/avatar-3.png">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/avatar/avatar-4.png">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/avatar/avatar-5.png">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/drawkit/drawkit-full-stack-man-colour.svg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/drawkit/drawkit-mobile-article-colour.svg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/drawkit/drawkit-nature-man-colour.svg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/drawkit/revenue-graph-colour.svg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/example-image-50.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/example-image.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/news/img01.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/news/img02.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/news/img03.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/news/img04.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/news/img05.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/news/img06.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/news/img07.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/news/img08.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/news/img09.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/news/img10.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/news/img11.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/news/img12.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/news/img13.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/news/img14.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/news/img15.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/news/img16.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/news/img17.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/p-250.png">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/p-50.png">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/products/product-1-50.png">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/products/product-1.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/products/product-2-50.png">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/products/product-2.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/products/product-3-50.png">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/products/product-3.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/products/product-4-50.png">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/products/product-4.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/products/product-5-50.png">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/products/product-5.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/stisla-fill.svg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/stisla-light.svg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/stisla-transparent.svg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/stisla.svg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/unsplash/andre-benz-1214056-unsplash.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/unsplash/eberhard-grossgasteiger-1207565-unsplash.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/img/unsplash/login-bg.jpg">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/jquery.dataTables.js">
+      <publishTime>04/03/2022 20:19:58</publishTime>
+    </File>
+    <File Include="assets/js/jquery.min.js">
+      <publishTime>04/03/2022 20:19:04</publishTime>
+    </File>
+    <File Include="assets/js/page/auth-register.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/bootstrap-modal.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/components-chat-box.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/components-multiple-upload.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/components-statistic.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/components-table.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/components-user.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/features-post-create.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/features-posts.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/features-setting-detail.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/forms-advanced-forms.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/gmaps-advanced-route.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/gmaps-draggable-marker.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/gmaps-geocoding.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/gmaps-geolocation.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/gmaps-marker.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/gmaps-multiple-marker.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/gmaps-route.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/gmaps-simple.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/index-0.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/index.js">
+      <publishTime>04/03/2022 19:37:01</publishTime>
+    </File>
+    <File Include="assets/js/page/modules-calendar.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/modules-chartjs.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/modules-datatables.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/modules-ion-icons.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/modules-slider.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/modules-sparkline.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/modules-sweetalert.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/modules-toastr.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/modules-vector-map.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/page/utilities-contact.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/scripts.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="assets/js/stisla.js">
+      <publishTime>10/10/2021 03:04:37</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>09/10/2013 16:29:20</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.pdb">
+      <publishTime>09/10/2013 16:29:20</publishTime>
+    </File>
+    <File Include="bin/EmployeeManagement.dll">
+      <publishTime>04/04/2022 01:02:22</publishTime>
+    </File>
+    <File Include="bin/EmployeeManagement.pdb">
+      <publishTime>04/04/2022 01:02:22</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>09/05/2018 16:10:50</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>07/25/2012 11:48:56</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>04/22/2019 01:06:16</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>08/08/2018 05:38:48</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe.config">
+      <publishTime>08/08/2018 12:18:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.rsp">
+      <publishTime>08/08/2018 12:09:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe">
+      <publishTime>08/08/2018 05:38:48</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe.config">
+      <publishTime>08/08/2018 12:18:34</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.rsp">
+      <publishTime>08/08/2018 12:09:56</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>08/08/2018 05:38:48</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>08/08/2018 05:38:48</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
+      <publishTime>08/08/2018 05:38:48</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>08/08/2018 05:38:48</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
+      <publishTime>08/08/2018 05:38:48</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>08/08/2018 05:38:48</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>08/08/2018 12:09:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
+      <publishTime>12/05/2017 09:36:44</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
+      <publishTime>12/05/2017 09:36:44</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Managed.Core.targets">
+      <publishTime>08/08/2018 12:09:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>08/08/2018 12:09:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Win32.Primitives.dll">
+      <publishTime>11/05/2016 18:55:32</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.AppContext.dll">
+      <publishTime>11/05/2016 18:55:34</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>05/16/2018 03:29:34</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Console.dll">
+      <publishTime>11/05/2016 18:55:48</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.DiagnosticSource.dll">
+      <publishTime>11/05/2016 18:55:52</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.FileVersionInfo.dll">
+      <publishTime>11/05/2016 18:55:56</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.StackTrace.dll">
+      <publishTime>11/05/2016 18:55:52</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Globalization.Calendars.dll">
+      <publishTime>11/05/2016 18:56:02</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.Compression.dll">
+      <publishTime>11/05/2016 18:56:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.Compression.ZipFile.dll">
+      <publishTime>11/05/2016 18:56:04</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.dll">
+      <publishTime>11/05/2016 18:56:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.Primitives.dll">
+      <publishTime>11/05/2016 18:56:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Net.Http.dll">
+      <publishTime>11/05/2016 18:56:30</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Net.Sockets.dll">
+      <publishTime>11/05/2016 18:56:34</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>05/16/2018 03:29:44</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Runtime.InteropServices.RuntimeInformation.dll">
+      <publishTime>11/05/2016 18:57:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Algorithms.dll">
+      <publishTime>11/05/2016 18:57:14</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Encoding.dll">
+      <publishTime>11/05/2016 18:57:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Primitives.dll">
+      <publishTime>11/05/2016 18:57:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.X509Certificates.dll">
+      <publishTime>11/05/2016 18:57:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Text.Encoding.CodePages.dll">
+      <publishTime>11/05/2016 18:57:20</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Threading.Tasks.Extensions.dll">
+      <publishTime>11/05/2016 18:57:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.ValueTuple.dll">
+      <publishTime>11/05/2016 18:57:30</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.ReaderWriter.dll">
+      <publishTime>11/05/2016 18:57:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XmlDocument.dll">
+      <publishTime>11/05/2016 18:57:34</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XPath.dll">
+      <publishTime>11/05/2016 18:57:40</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XPath.XDocument.dll">
+      <publishTime>11/05/2016 18:57:34</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>08/08/2018 05:38:48</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe.config">
+      <publishTime>08/08/2018 12:18:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.rsp">
+      <publishTime>08/08/2018 12:09:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>08/08/2018 05:38:48</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>08/08/2018 12:18:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>11/28/2018 13:04:24</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>11/28/2018 12:59:46</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>02/11/2014 15:26:04</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>11/28/2018 13:00:12</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>11/28/2018 13:04:24</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>11/28/2018 13:04:24</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>11/28/2018 13:04:24</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>01/23/2014 13:57:34</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>04/03/2022 17:48:37</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>04/03/2022 17:48:37</publishTime>
+    </File>
+    <File Include="Views/Account/ChangePassword.cshtml">
+      <publishTime>04/03/2022 23:36:14</publishTime>
+    </File>
+    <File Include="Views/Account/Login.cshtml">
+      <publishTime>04/03/2022 18:49:45</publishTime>
+    </File>
+    <File Include="Views/Account/Profile.cshtml">
+      <publishTime>04/03/2022 23:34:09</publishTime>
+    </File>
+    <File Include="Views/Chat/Index.cshtml">
+      <publishTime>04/03/2022 23:02:11</publishTime>
+    </File>
+    <File Include="Views/Dashboard/Index.cshtml">
+      <publishTime>04/04/2022 00:25:31</publishTime>
+    </File>
+    <File Include="Views/Employee/AddEmployee.cshtml">
+      <publishTime>04/03/2022 22:24:07</publishTime>
+    </File>
+    <File Include="Views/Employee/ListEmployee.cshtml">
+      <publishTime>04/03/2022 23:45:25</publishTime>
+    </File>
+    <File Include="Views/Leave/AddLeaveRequest.cshtml">
+      <publishTime>04/04/2022 00:47:24</publishTime>
+    </File>
+    <File Include="Views/Leave/ViewLeaveRequest.cshtml">
+      <publishTime>04/04/2022 00:58:16</publishTime>
+    </File>
+    <File Include="Views/News/AddNews.cshtml">
+      <publishTime>04/03/2022 23:16:22</publishTime>
+    </File>
+    <File Include="Views/News/ListNews.cshtml">
+      <publishTime>04/03/2022 23:57:13</publishTime>
+    </File>
+    <File Include="Views/PaySlip/AddPaySlip.cshtml">
+      <publishTime>04/03/2022 22:02:58</publishTime>
+    </File>
+    <File Include="Views/PaySlip/ViewSlip.cshtml">
+      <publishTime>04/04/2022 01:02:14</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>04/03/2022 17:48:37</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>04/04/2022 00:48:18</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>04/03/2022 17:48:37</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>04/03/2022 17:48:37</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>04/04/2022 00:50:44</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

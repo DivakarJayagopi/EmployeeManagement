@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <title>Ecommerce Dashboard &mdash; Stisla</title>
+
+    <!-- General CSS Files -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="stylesheet" href="~/assets/css/components.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="main-wrapper">
+            <div class="navbar-bg"></div>
+            <nav class="navbar navbar-expand-lg main-navbar">
+                <form class="form-inline mr-auto">
+                    <ul class="navbar-nav mr-3">
+                        <li><a href="javascript:void(0);" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+                    </ul>
+                </form>
+                <ul class="navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                            <img alt="image" src="../assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+                            <div class="d-sm-none d-lg-inline-block">@Session["Name"].ToString()</div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a href="@Url.Action("Profile", "Account")" class="dropdown-item has-icon">
+                                <i class="far fa-user"></i> Profile
+                            </a>
+                            <a href="@Url.Action("ChangePassword", "Account")" class="dropdown-item has-icon">
+                                <i class="far fa-user"></i> Change Password
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="@Url.Action("Login", "Account")" class="dropdown-item has-icon text-danger">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="main-sidebar">
+                <aside id="sidebar-wrapper">
+                    <div class="sidebar-brand">
+                        <a href="@Url.Action("index", "Dashboard")">Tech</a>
+                    </div>
+                    <div class="sidebar-brand sidebar-brand-sm">
+                        <a href="index.html">Tech</a>
+                    </div>
+                    @if (Session["IsAdmin"].ToString() == "1")
+                    {
+        <ul class="sidebar-menu">
+            <li class="menu-header text-info">DashBoard</li>
+            <li id="dashboard"><a class="nav-link" href="@Url.Action("index", "Dashboard")"> <i class="fas fa-fire"></i><span>DashBoard</span></a></li>
+
+            <li class="menu-header text-info">Employee Management</li>
+            <li id="addEmployee"><a class="nav-link" href="@Url.Action("AddEmployee", "Employee")" id="AddUserPage"><i class="fas fa-solid fa-user"></i><span>Add Employee</span></a></li>
+            <li id="viewEmployee"><a class="nav-link" href="@Url.Action("ListEmployee", "Employee")" id="ViewUserPage"><i class="fas fa-solid fa-users"></i><span>All Employees</span></a></li>
+
+            <li class="menu-header text-info">Leave Request</li>
+            <li id="viewLeaveRequest"><a class="nav-link" href="@Url.Action("ViewLeaveRequest", "Leave")" id="AddUserPage"><i class="fas fa-solid fa-list-ul"></i><span>View Leave Request</span></a></li>
+
+            <li class="menu-header text-info">Pay Slip</li>
+            <li id="addPaySlip"><a class="nav-link" href="@Url.Action("AddPaySlip", "PaySlip")" id="AddUserPage"><i class="fas fa-solid fa-credit-card"></i><span>Add PaySlip</span></a></li>
+
+            <li class="menu-header text-info">News</li>
+            <li id="addNews"><a class="nav-link" href="@Url.Action("AddNews", "News")" id="AddUserPage"><i class="fas fa-regular fa-newspaper"></i><span>Add News</span></a></li>
+            <li id="viewNews"><a class="nav-link" href="@Url.Action("ListNews", "News")" id="AddUserPage"><i class="fas fa-regular fa-folder-open"></i><span>View News</span></a></li>
+
+            <li class="menu-header text-info">Chat</li>
+            <li id="chatting"><a class="nav-link" href="@Url.Action("Index", "Chat")" id="AddUserPage"><i class="fas fa-solid fa-comment"></i><span>Chat</span></a></li>
+
+        </ul> }
+    else
+    {
+            <ul class="sidebar-menu">
+            <li class="menu-header text-info">DashBoard</li>
+            <li id="dashboard"><a class="nav-link" href="@Url.Action("index", "Dashboard")"> <i class="fas fa-fire"></i><span>DashBoard</span></a></li>
+
+            <li class="menu-header text-info">Leave Request</li>
+            <li id="addLeaveRequest"><a class="nav-link" href="@Url.Action("AddLeaveRequest", "Leave")" id="AddUserPage"><i class="fas fa-solid fa-list-ul"></i><span>Add Leave Request</span></a></li>
+            <li id="viewLeaveRequest"><a class="nav-link" href="@Url.Action("ViewLeaveRequest", "Leave")" id="AddUserPage"><i class="fas fa-solid fa-list-ul"></i><span>View Leave Request</span></a></li>
+
+            <li class="menu-header text-info">Pay Slip</li>
+            <li id="viewPaySlip"><a class="nav-link" href="@Url.Action("ViewSlip", "PaySlip")" id="AddUserPage"><i class="fas fa-solid fa-credit-card"></i><span>View PaySlip</span></a></li>
+
+            <li class="menu-header text-info">News</li>
+            <li id="viewNews"><a class="nav-link" href="@Url.Action("ListNews", "News")" id="AddUserPage"><i class="fas fa-regular fa-folder-open"></i><span>View News</span></a></li>
+
+            <li class="menu-header text-info">Chat</li>
+            <li id="chatting"><a class="nav-link" href="@Url.Action("Index", "Chat")" id="AddUserPage"><i class="fas fa-solid fa-comment"></i><span>Chat</span></a></li>
+
+        </ul>}
+                </aside>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                @RenderBody()
+            </div>
+            <footer class="main-footer">
+            </footer>
+        </div>
+    </div>
+
+    <!-- General JS Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="~/assets/js/stisla.js"></script>
+
+    <!-- Template JS File -->
+    <script src="~/assets/js/scripts.js"></script>
+
+    <!-- Page Specific JS File -->
+    <script src="~/assets/js/page/index.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var URL = window.location.pathname;
+            switch (URL) {
+                case "/Dashboard/index":
+                    $("#dashboard").addClass("active");
+                    break;
+                case "/Employee/AddEmployee":
+                    $("#addEmployee").addClass("active");
+                    break;
+                case "/Employee/ListEmployee":
+                    $("#viewEmployee").addClass("active");
+                    break;
+                case "/Leave/ViewLeaveRequest":
+                    $("#viewLeaveRequest").addClass("active");
+                    break;
+                case "/Leave/AddLeaveRequest":
+                    $("#addLeaveRequest").addClass("active");
+                    break;
+                case "/PaySlip/AddPaySlip":
+                    $("#addPaySlip").addClass("active");
+                    break;
+                case "/PaySlip/ViewSlip":
+                    $("#viewPaySlip").addClass("active");
+                    break;
+                case "/News/AddNews":
+                    $("#addNews").addClass("active");
+                    break;
+                case "/News/ListNews":
+                    $("#viewNews").addClass("active");
+                    break;
+                case "/Chat/Index":
+                    $("#chatting").addClass("active");
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>
+

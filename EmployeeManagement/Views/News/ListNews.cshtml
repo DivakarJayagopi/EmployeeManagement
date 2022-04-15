@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "ListNews";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/assets/css/jquery.dataTables.css">
+<section class="section">
+    <div class="section-body">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>List News</h4>
+                    </div>
+                    <div class="card-body">
+                        <table id="newsListTable" class="display" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Tile</th>
+                                    <th>Description</th>
+                                    <th>Date</th>
+                                    <th>Images</th>
+                                    @if (Session["IsAdmin"].ToString() == "1")
+                                    {
+                                        <th>Actions</th>
+                                    }
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Fun Firday</td>
+                                    <td>Fun Firday will be held by 4 - 6</td>
+                                    <td>26 Mar 2022</td>
+                                    <td>No Images</td>
+                                    @if (Session["IsAdmin"].ToString() == "1")
+                                    {
+                                        <td class="text-center"><a href="javascript:void(0);" id="DeleteNews"><i class="fas fa-trash text-danger"></i></a></td>
+                                    }
+                                </tr>
+                                <tr>
+                                    <td>Freshes Party</td>
+                                    <td>We have arrange a freshes party on comming wednesday</td>
+                                    <td>22 Mar 2022</td>
+                                    <td>No Images</td>
+                                    @if (Session["IsAdmin"].ToString() == "1")
+                                    {
+                                        <td class="text-center"><a href="javascript:void(0);" id="DeleteNews"><i class="fas fa-trash text-danger"></i></a></td>
+                                    }
+                                </tr>
+                                <tr>
+                                    <td>Product Lauch Event</td>
+                                    <td>Our product lauch event has been planed on Firday</td>
+                                    <td>10 Apr 2022</td>
+                                    <td>No Images</td>
+                                    @if (Session["IsAdmin"].ToString() == "1")
+                                    {
+                                        <td class="text-center"><a href="javascript:void(0);" id="DeleteNews"><i class="fas fa-trash text-danger"></i></a></td>
+                                    }
+                                </tr>
+                                <tr>
+                                    <td>Pongal Celebration</td>
+                                    <td>Organization has been planned to celebrate pongal on this Thursay</td>
+                                    <td>11 May 2022</td>
+                                    <td>No Images</td>
+                                    @if (Session["IsAdmin"].ToString() == "1")
+                                    {
+                                        <td class="text-center"><a href="javascript:void(0);" id="DeleteNews"><i class="fas fa-trash text-danger"></i></a></td>
+                                    }
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="~/assets/js/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8" src="~/assets/js/jquery.dataTables.js"></script>
+<script src="~/App_Assests/js/news.js"></script>

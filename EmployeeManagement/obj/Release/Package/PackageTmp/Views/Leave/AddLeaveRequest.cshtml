@@ -1,0 +1,51 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section">
+    <div class="section-body">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Add Leave Request</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Select From Date</label>
+                            <input type="date" class="form-control MaxOrderCountForShop">
+                        </div>
+                        <div class="form-group">
+                            <label>Select To Date</label>
+                            <input type="date" class="form-control MaxOrderCountForShop">
+                        </div>
+                        <div class="form-group">
+                            <label>Title</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control ShopArea">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Select Leave Type</label>
+                            <select class="form-control ShopArea">
+                                <option>Casual Leave</option>
+                                <option>Sick Leave</option>
+                                <option>Maternity Leave</option>
+                                <option>Marriage Leave</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea rows="4" cols="500" class="form-control" style="min-height: 100px;"></textarea>
+                        </div>
+                        <span class="text-danger customErrorMessageAddEmployee"></span>
+                        <button class="btn btn-block btn-info AddEmployeeFromSubmit" type="button">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="~/assets/js/jquery.min.js"></script>

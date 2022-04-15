@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewBag.Title = "ViewLeaveRequest";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/assets/css/jquery.dataTables.css">
+
+<section class="section">
+    <div class="section-body">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Employess Leave Requests</h4>
+                    </div>
+                    <div class="card-body">
+
+                        @if (Session["IsAdmin"].ToString() == "1")
+                        {
+                            <table id="leaveRequestListTable" class="display" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Team</th>
+                                        <th>Leave Dates</th>
+                                        <th>Reason</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Alex John</td>
+                                        <td>Cloud</td>
+                                        <td>22 Apr 2022</td>
+                                        <td>Emergency Leave</td>
+                                        <td><a href="javascript:void(0)"><b class="badge badge-success" id="acceptLeaveRequest">Accept</b></a> &nbsp; <a href="javascript:void(0)"><i class="badge badge-danger" id="rejectLeaveRequest">Reject</i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ajith Kumar</td>
+                                        <td>Development</td>
+                                        <td>23 Apr 2022</td>
+                                        <td>Emergency Leave</td>
+                                        <td><a href="javascript:void(0)"><b class="badge badge-success" id="acceptLeaveRequest">Accept</b></a> &nbsp; <a href="javascript:void(0)"><i class="badge badge-danger" id="rejectLeaveRequest">Reject</i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Olive Yew</td>
+                                        <td>Support</td>
+                                        <td>23 Apr 2022</td>
+                                        <td>Marriage Leave</td>
+                                        <td><a href="javascript:void(0)"><b class="badge badge-success" id="acceptLeaveRequest">Accept</b></a> &nbsp; <a href="javascript:void(0)"><i class="badge badge-danger" id="rejectLeaveRequest">Reject</i></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <table id="leaveRequestListTable" class="display" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Team</th>
+                                        <th>Leave Dates</th>
+                                        <th>Reason</th>
+                                        <th>Status</th>
+                                        <th>Comments</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Ajith Kumar</td>
+                                        <td>Development</td>
+                                        <td>22 Mar 2022</td>
+                                        <td>Emergency Leave</td>
+                                        <td><b class="badge badge-success">Accepted</b></td>
+                                        <td>Your leave request has been accepted</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ajith Kumar</td>
+                                        <td>Development</td>
+                                        <td>23 Mar 2022</td>
+                                        <td>Emergency Leave</td>
+                                        <td><b class="badge badge-warning">Pending</b></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="leaveRejectReason">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Reject leave request</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label>Add Resaon leave rejection</label>
+                        <textarea rows="10" cols="500" style="max-width: 100%; min-height: 100px;" class="form-control" placeholder="Please provide a reason for the leave rejection"></textarea>
+                    </div>
+                </div>
+                <button class="btn btn-block btn-danger AddEmployeeFromSubmit" type="button">Reject</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/assets/js/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8" src="~/assets/js/jquery.dataTables.js"></script>
+<script src="~/App_Assests/js/leave.js"></script>

@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewBag.Title = "ViewSlip";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section">
+    <div class="section-body">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>View PaySlip</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Select Month</label>
+                            <input type="month" class="form-control MaxOrderCountForShop">
+                        </div>
+                        <div class="form-group">
+                            <h3>Salary Info</h3> 
+                            <button class="text-right btn btn-success">Download As PDF</button>
+                            <br /><br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><b>Earnings</b></p>
+                                    <table class="display" style="width:100%">
+                                        <tbody>
+                                            <tr>
+                                                <td>Basic</td>
+                                                <td>20,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>DA</td>
+                                                <td>5,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HRA</td>
+                                                <td>3,500</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Medical Allowances</td>
+                                                <td>500</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Conveyance Charges</td>
+                                                <td>500</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Special Allowances</td>
+                                                <td>500</td>
+                                            </tr>
+                                            <tr>
+                                                <td><p><b>Total Earnings :</b></p></td>
+                                                <td><p><b>30,000</b></p></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                   
+                                </div>
+                                <div class="col-md-6">
+                                    <p><b>Deduction</b></p>
+                                    <table class="display" style="width:100%">
+                                        <tbody>
+                                            <tr>
+                                                <td>LOP</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Income Tax</td>
+                                                <td>2,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Educational Cess</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><p><b>Total Deduction :</b></p></td>
+                                                <td><p><b>2,000</b></p></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="col-md-12 row">
+                                <div class="col-md-6">
+                                    <p><b>Net Pay : </b></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><b>28,000</b></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/assets/js/jquery.min.js"></script>

@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/packages/EntityFramework.6.4.4
+.vs
+.vs/EmployeeManagement/config
+/EmployeeManagement/bin
+EmployeeManagement/bin

@@ -13,6 +13,7 @@ namespace EmployeeManagement.Controllers
         {
             if (Session["IsAdmin"] == null)
                 return RedirectToAction("Login", "Account");
+
             return View();
         }
 

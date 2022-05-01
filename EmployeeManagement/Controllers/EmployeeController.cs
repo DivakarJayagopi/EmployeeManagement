@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmployeeManagement.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace EmployeeManagement.Controllers
 {
     public class EmployeeController : Controller
     {
+        private EmployeeDbContext _dbContext = new EmployeeDbContext();
         // GET: Employee
         public ActionResult AddEmployee()
         {
@@ -21,6 +23,9 @@ namespace EmployeeManagement.Controllers
         {
             if (Session["IsAdmin"] == null)
                 return RedirectToAction("Login", "Account");
+
+            var AllEmployees = _dbContext.Employees.ToList();
+            ViewBag.Employees = AllEmployees;
             return View();
         }
     }

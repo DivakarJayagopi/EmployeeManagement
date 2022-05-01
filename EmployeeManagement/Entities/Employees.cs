@@ -15,5 +15,6 @@ namespace EmployeeManagement.Entities
         public string Address { get; set; }
         public string Team { get; set; }
         public string Role { get; set; }
+        public int IsAdmin { get; set; }
     }
 }

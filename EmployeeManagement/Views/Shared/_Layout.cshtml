@@ -12,6 +12,7 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="~/assets/css/style.css">
     <link rel="stylesheet" href="~/assets/css/components.css">
+    <link rel="stylesheet" href="~/App_Assests/css/custom.css">
 </head>
 
 <body>
@@ -55,48 +56,51 @@
                     </div>
                     @if (Session["IsAdmin"].ToString() == "1")
                     {
-        <ul class="sidebar-menu">
-            <li class="menu-header text-info">DashBoard</li>
-            <li id="dashboard"><a class="nav-link" href="@Url.Action("index", "Dashboard")"> <i class="fas fa-fire"></i><span>DashBoard</span></a></li>
+                        <ul class="sidebar-menu">
+                            <li class="menu-header text-info">DashBoard</li>
+                            <li id="dashboard"><a class="nav-link" href="@Url.Action("index", "Dashboard")"> <i class="fas fa-fire"></i><span>DashBoard</span></a></li>
 
-            <li class="menu-header text-info">Employee Management</li>
-            <li id="addEmployee"><a class="nav-link" href="@Url.Action("AddEmployee", "Employee")" id="AddUserPage"><i class="fas fa-solid fa-user"></i><span>Add Employee</span></a></li>
-            <li id="viewEmployee"><a class="nav-link" href="@Url.Action("ListEmployee", "Employee")" id="ViewUserPage"><i class="fas fa-solid fa-users"></i><span>All Employees</span></a></li>
+                            <li class="menu-header text-info">Employee Management</li>
+                            <li id="addEmployee"><a class="nav-link" href="@Url.Action("AddEmployee", "Employee")" id="AddUserPage"><i class="fas fa-solid fa-user"></i><span>Add Employee</span></a></li>
+                            <li id="viewEmployee"><a class="nav-link" href="@Url.Action("ListEmployee", "Employee")" id="ViewUserPage"><i class="fas fa-solid fa-users"></i><span>All Employees</span></a></li>
 
-            <li class="menu-header text-info">Leave Request</li>
-            <li id="viewLeaveRequest"><a class="nav-link" href="@Url.Action("ViewLeaveRequest", "Leave")" id="AddUserPage"><i class="fas fa-solid fa-list-ul"></i><span>View Leave Request</span></a></li>
+                            <li class="menu-header text-info">Leave Request</li>
+                            <li id="viewPendingRequest"><a class="nav-link" href="@Url.Action("ViewPendingRequest", "Leave")" id="AddUserPage"><i class="fas fa-solid fa-list-ul"></i><span>View Pending Request</span></a></li>
 
-            <li class="menu-header text-info">Pay Slip</li>
-            <li id="addPaySlip"><a class="nav-link" href="@Url.Action("AddPaySlip", "PaySlip")" id="AddUserPage"><i class="fas fa-solid fa-credit-card"></i><span>Add PaySlip</span></a></li>
+                            <li id="viewLeaveRequest"><a class="nav-link" href="@Url.Action("ViewLeaveRequest", "Leave")" id="AddUserPage"><i class="fas fa-solid fa-list-ul"></i><span>View All Requests</span></a></li>
 
-            <li class="menu-header text-info">News</li>
-            <li id="addNews"><a class="nav-link" href="@Url.Action("AddNews", "News")" id="AddUserPage"><i class="fas fa-regular fa-newspaper"></i><span>Add News</span></a></li>
-            <li id="viewNews"><a class="nav-link" href="@Url.Action("ListNews", "News")" id="AddUserPage"><i class="fas fa-regular fa-folder-open"></i><span>View News</span></a></li>
+                            <li class="menu-header text-info">Pay Slip</li>
+                            <li id="addPaySlip"><a class="nav-link" href="@Url.Action("AddPaySlip", "PaySlip")" id="AddUserPage"><i class="fas fa-solid fa-credit-card"></i><span>Add PaySlip</span></a></li>
 
-            <li class="menu-header text-info">Chat</li>
-            <li id="chatting"><a class="nav-link" href="@Url.Action("Index", "Chat")" id="AddUserPage"><i class="fas fa-solid fa-comment"></i><span>Chat</span></a></li>
+                            <li class="menu-header text-info">News</li>
+                            <li id="addNews"><a class="nav-link" href="@Url.Action("AddNews", "News")" id="AddUserPage"><i class="fas fa-regular fa-newspaper"></i><span>Add News</span></a></li>
+                            <li id="viewNews"><a class="nav-link" href="@Url.Action("ListNews", "News")" id="AddUserPage"><i class="fas fa-regular fa-folder-open"></i><span>View News</span></a></li>
 
-        </ul> }
-    else
-    {
-            <ul class="sidebar-menu">
-            <li class="menu-header text-info">DashBoard</li>
-            <li id="dashboard"><a class="nav-link" href="@Url.Action("index", "Dashboard")"> <i class="fas fa-fire"></i><span>DashBoard</span></a></li>
+                            <li class="menu-header text-info">Chat</li>
+                            <li id="chatting"><a class="nav-link" href="@Url.Action("Index", "Chat")" id="AddUserPage"><i class="fas fa-solid fa-comment"></i><span>Chat</span></a></li>
 
-            <li class="menu-header text-info">Leave Request</li>
-            <li id="addLeaveRequest"><a class="nav-link" href="@Url.Action("AddLeaveRequest", "Leave")" id="AddUserPage"><i class="fas fa-solid fa-list-ul"></i><span>Add Leave Request</span></a></li>
-            <li id="viewLeaveRequest"><a class="nav-link" href="@Url.Action("ViewLeaveRequest", "Leave")" id="AddUserPage"><i class="fas fa-solid fa-list-ul"></i><span>View Leave Request</span></a></li>
+                        </ul> }
+                    else
+                    {
+                        <ul class="sidebar-menu">
+                            <li class="menu-header text-info">DashBoard</li>
+                            <li id="dashboard"><a class="nav-link" href="@Url.Action("index", "Dashboard")"> <i class="fas fa-fire"></i><span>DashBoard</span></a></li>
 
-            <li class="menu-header text-info">Pay Slip</li>
-            <li id="viewPaySlip"><a class="nav-link" href="@Url.Action("ViewSlip", "PaySlip")" id="AddUserPage"><i class="fas fa-solid fa-credit-card"></i><span>View PaySlip</span></a></li>
+                            <li class="menu-header text-info">Leave Request</li>
+                            <li id="addLeaveRequest"><a class="nav-link" href="@Url.Action("AddLeaveRequest", "Leave")" id="AddUserPage"><i class="fas fa-solid fa-list-ul"></i><span>Add Leave Request</span></a></li>
+                            <li id="viewPendingRequest"><a class="nav-link" href="@Url.Action("ViewPendingRequest", "Leave")" id="AddUserPage"><i class="fas fa-solid fa-list-ul"></i><span>View Pending Request</span></a></li>
+                            <li id="viewLeaveRequest"><a class="nav-link" href="@Url.Action("ViewLeaveRequest", "Leave")" id="AddUserPage"><i class="fas fa-solid fa-list-ul"></i><span>View All Requests</span></a></li>
 
-            <li class="menu-header text-info">News</li>
-            <li id="viewNews"><a class="nav-link" href="@Url.Action("ListNews", "News")" id="AddUserPage"><i class="fas fa-regular fa-folder-open"></i><span>View News</span></a></li>
+                            <li class="menu-header text-info">Pay Slip</li>
+                            <li id="viewPaySlip"><a class="nav-link" href="@Url.Action("ViewSlip", "PaySlip")" id="AddUserPage"><i class="fas fa-solid fa-credit-card"></i><span>View PaySlip</span></a></li>
 
-            <li class="menu-header text-info">Chat</li>
-            <li id="chatting"><a class="nav-link" href="@Url.Action("Index", "Chat")" id="AddUserPage"><i class="fas fa-solid fa-comment"></i><span>Chat</span></a></li>
+                            <li class="menu-header text-info">News</li>
+                            <li id="viewNews"><a class="nav-link" href="@Url.Action("ListNews", "News")" id="AddUserPage"><i class="fas fa-regular fa-folder-open"></i><span>View News</span></a></li>
 
-        </ul>}
+                            <li class="menu-header text-info">Chat</li>
+                            <li id="chatting"><a class="nav-link" href="@Url.Action("Index", "Chat")" id="AddUserPage"><i class="fas fa-solid fa-comment"></i><span>Chat</span></a></li>
+
+                        </ul>}
                 </aside>
             </div>
 
@@ -120,6 +124,7 @@
 
     <!-- Template JS File -->
     <script src="~/assets/js/scripts.js"></script>
+    <script src="~/App_Assests/js/custom.js"></script>
 
     <!-- Page Specific JS File -->
     <script src="~/assets/js/page/index.js"></script>
@@ -142,6 +147,9 @@
                     break;
                 case "/Leave/AddLeaveRequest":
                     $("#addLeaveRequest").addClass("active");
+                    break;
+                case "/Leave/ViewPendingRequest":
+                    $("#viewPendingRequest").addClass("active");
                     break;
                 case "/PaySlip/AddPaySlip":
                     $("#addPaySlip").addClass("active");

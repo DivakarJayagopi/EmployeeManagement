@@ -23,6 +23,7 @@ namespace EmployeeManagement.Entities
             modelBuilder.Entity<Employees>().ToTable("Employees");
             modelBuilder.Entity<LeaveRequest>().ToTable("LeaveRequest");
             modelBuilder.Entity<News>().ToTable("News");
+            modelBuilder.Entity<NewsConnector>().ToTable("NewsConnector");
             modelBuilder.Entity<PaySlip>().ToTable("PaySlip");
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             base.OnModelCreating(modelBuilder);

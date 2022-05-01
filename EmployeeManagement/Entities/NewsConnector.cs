@@ -5,11 +5,10 @@ using System.Web;
 
 namespace EmployeeManagement.Entities
 {
-    public class News : DateProperty
+    public class NewsConnector : DateProperty
     {
         public string Id { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string Images { get; set; }
+        public string NewsId { get; set; }
+        public string EmployeeId { get; set; }
     }
 }

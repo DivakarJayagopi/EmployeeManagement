@@ -24,119 +24,32 @@
                                     <th>Address</th>
                                     <th>Team</th>
                                     <th>Role</th>
+                                    <th>Permission Type</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            @foreach (var Employee in ViewBag.Employees)
+                            {
                                 <tr>
-                                    <td>Super Admin</td>
-                                    <td>superadmin@gmail.com</td>
-                                    <td>7896541230</td>
-                                    <td>10-05-1995</td>
-                                    <td>Chennai</td>
-                                    <td>HR</td>
-                                    <td>HR Manager</td>
-                                    <td class="text-center"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" id="EditEmployeeInfo"><i class="fas fa-light fa-pen text-info"></i></a> &nbsp; <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" id="DeleteEmployeeInfo"><i class="fas fa-light fa-trash text-danger"></i></a></td>
+                                    <td data-id="@Employee.Id" class="UpatedName">@Employee.Name</td>
+                                    <td data-id="@Employee.Id" class="UpatedEmail">@Employee.Email</td>
+                                    <td data-id="@Employee.Id" class="UpatedMobileNumber">@Employee.MobileNumber</td>
+                                    <td data-id="@Employee.Id" class="UpatedDOB">@Employee.DOB.ToShortDateString()</td>
+                                    <td data-id="@Employee.Id" class="UpatedAddress">@Employee.Address</td>
+                                    <td data-id="@Employee.Id" class="UpatedTeam">@Employee.Team</td>
+                                    <td data-id="@Employee.Id" class="UpatedRole">@Employee.Role</td>
+                                    @if (@Employee.IsAdmin == 1)
+                                    {
+                                        <td data-id="@Employee.Id" class="Role">Admin</td>
+                                    }
+                                    else
+                                    {
+                                        <td  data-id="@Employee.Id" class="Role">Normal</td>
+                                    }
+                                    <td class="text-center"><a href="javascript:void(0);" data-id="@Employee.Id" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" id="EditEmployeeInfo"><i class="fas fa-light fa-pen text-info"></i></a> &nbsp; <a href="javascript:void(0);" data-id="@Employee.Id" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" id="DeleteEmployeeInfo"><i class="fas fa-light fa-trash text-danger"></i></a></td>
                                 </tr>
-                                <tr>
-                                    <td>Alex John</td>
-                                    <td>alexjohn@gmail.com</td>
-                                    <td>7485964152</td>
-                                    <td>10-05-1992</td>
-                                    <td>Thiruvallur</td>
-                                    <td>Cloud</td>
-                                    <td>Cloud Engineer</td>
-                                   <td class="text-center"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" id="EditEmployeeInfo"><i class="fas fa-light fa-pen text-info"></i></a> &nbsp; <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" id="DeleteEmployeeInfo"><i class="fas fa-light fa-trash text-danger"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>Ajith Kumar</td>
-                                    <td>ajithkumar@gmail.com</td>
-                                    <td>7485964152</td>
-                                    <td>15-06-1990</td>
-                                    <td>Tambarm</td>
-                                    <td>Development</td>
-                                    <td>Developer</td>
-                                   <td class="text-center"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" id="EditEmployeeInfo"><i class="fas fa-light fa-pen text-info"></i></a> &nbsp; <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" id="DeleteEmployeeInfo"><i class="fas fa-light fa-trash text-danger"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>Peg Legge</td>
-                                    <td>peglegge@gmail.com</td>
-                                    <td>7538694210</td>
-                                    <td>23-08-1980</td>
-                                    <td>Pallavaram</td>
-                                    <td>Product</td>
-                                    <td>Product Manager</td>
-                                   <td class="text-center"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" id="EditEmployeeInfo"><i class="fas fa-light fa-pen text-info"></i></a> &nbsp; <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" id="DeleteEmployeeInfo"><i class="fas fa-light fa-trash text-danger"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>Olive Yew</td>
-                                    <td>oliveyew@gmail.com</td>
-                                    <td>7538694210</td>
-                                    <td>25-08-1980</td>
-                                    <td>Guindy</td>
-                                    <td>Support</td>
-                                    <td>Support Enginer</td>
-                                   <td class="text-center"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" id="EditEmployeeInfo"><i class="fas fa-light fa-pen text-info"></i></a> &nbsp; <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" id="DeleteEmployeeInfo"><i class="fas fa-light fa-trash text-danger"></i></a></td>
-                                <tr>
 
-                                    <td>Allie Grater</td>
-                                    <td>alliegarter@gmail.com</td>
-                                    <td>7856124680</td>
-                                    <td>20-08-1980</td>
-                                    <td>Anna Nagar</td>
-                                    <td>Testing</td>
-                                    <td>Senior Tester</td>
-                                   <td class="text-center"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" id="EditEmployeeInfo"><i class="fas fa-light fa-pen text-info"></i></a> &nbsp; <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" id="DeleteEmployeeInfo"><i class="fas fa-light fa-trash text-danger"></i></a></td>
-                                <tr>
-                                    <td>Divakar Jayagopi</td>
-                                    <td>divakarjayagopi@gmail.com</td>
-                                    <td>8148563820</td>
-                                    <td>20-08-1997</td>
-                                    <td>Redhills</td>
-                                    <td>Development</td>
-                                    <td>Senior Developer</td>
-                                   <td class="text-center"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" id="EditEmployeeInfo"><i class="fas fa-light fa-pen text-info"></i></a> &nbsp; <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" id="DeleteEmployeeInfo"><i class="fas fa-light fa-trash text-danger"></i></a></td>
-                                <tr>
-                                    <td>Tamil Selvi</td>
-                                    <td>tamilselvi@gmail.com</td>
-                                    <td>9652413050</td>
-                                    <td>20-08-1995</td>
-                                    <td>Avadi</td>
-                                    <td>Development</td>
-                                    <td>Senior Developer</td>
-                                    <td class="text-center"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"id="EditEmployeeInfo"><i class="fas fa-light fa-pen text-info"></i></a> &nbsp; <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="fas fa-light fa-trash text-danger"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>Dhanesh Kumar</td>
-                                    <td>dhaneshkumar@gmail.com</td>
-                                    <td>7899877890</td>
-                                    <td>04-04-1995</td>
-                                    <td>Redhills</td>
-                                    <td>Testing</td>
-                                    <td>Senior Tester</td>
-                                   <td class="text-center"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" id="EditEmployeeInfo"><i class="fas fa-light fa-pen text-info"></i></a> &nbsp; <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" id="DeleteEmployeeInfo"><i class="fas fa-light fa-trash text-danger"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>Mukesh Kannan</td>
-                                    <td>mukeshkannan@gmail.com</td>
-                                    <td>7899877890</td>
-                                    <td>05-05-2000</td>
-                                    <td>Redhills</td>
-                                    <td>Testing</td>
-                                    <td>Senior Tester</td>
-                                   <td class="text-center"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" id="EditEmployeeInfo"><i class="fas fa-light fa-pen text-info"></i></a> &nbsp; <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" id="DeleteEmployeeInfo"><i class="fas fa-light fa-trash text-danger"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>Ramya Devaraj</td>
-                                    <td>ramyadevaraj@gmail.com</td>
-                                    <td>7418524120</td>
-                                    <td>10-10-1999</td>
-                                    <td>Redhills</td>
-                                    <td>Cloud</td>
-                                    <td>Cloud Enginer</td>
-                                   <td class="text-center"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" id="EditEmployeeInfo"><i class="fas fa-light fa-pen text-info"></i></a> &nbsp; <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" id="DeleteEmployeeInfo"><i class="fas fa-light fa-trash text-danger"></i></a></td>
-                                </tr>
-                            </tbody>
+                            }
                         </table>
                     </div>
                 </div>
@@ -155,38 +68,46 @@
                 </button>
             </div>
             <div class="modal-body">
+                <input type="hidden" class="EmployeeId"/>
                 <div class="form-group">
                     <label>Name</label>
-                    <input type="text" class="form-control" value="Alex John">
+                    <input type="text" class="form-control Name">
                 </div>
                 <div class="form-group">
                     <label>Email</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" value="alexjohn@gmail.com">
+                        <input type="text" class="form-control Email">
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Mobile Number</label>
-                    <input type="number" class="form-control" value="7485964152">
+                    <input type="number" class="form-control Number">
                 </div>
                 <div class="form-group">
                     <label>Date of Birth</label>
-                    <input type="date" class="form-control" value="10-05-1992">
+                    <input type="date" class="form-control dob" value="2022-01-01" min="1900-01-01" max="3000-12-31">
                 </div>
                 <div class="form-group">
                     <label>Address</label>
-                    <input type="text" class="form-control" value="Thiruvallur">
+                    <input type="text" class="form-control Address">
                 </div>
                 <div class="form-group">
                     <label>Team</label>
-                    <input type="text" class="form-control" value="Cloud">
+                    <input type="text" class="form-control Team">
                 </div>
                 <div class="form-group">
                     <label>Role</label>
-                    <input type="text" class="form-control" value="Cloud Engineer">
+                    <input type="text" class="form-control Role">
                 </div>
-                <span class="text-danger customErrorMessageAddEmployee"></span>
-                <button class="btn btn-block btn-info AddEmployeeFromSubmit" type="button">Update</button>
+                <div class="form-group">
+                    <label>Permission Type</label>
+                    <select class="form-control IsAdmin">
+                        <option value="0">Normal</option>
+                        <option value="1">Admin</option>
+                    </select>
+                </div>
+                <span class="text-danger customErrorMessageUpdateEmployee"></span>
+                <button class="btn btn-block btn-info UpdateEmployeeFromSubmit" id="UpdateEmployeeFromSubmit" type="button">Update</button>
             </div>
         </div>
     </div>
@@ -194,3 +115,8 @@
 <script src="~/assets/js/jquery.min.js"></script>
 <script type="text/javascript" charset="utf8" src="~/assets/js/jquery.dataTables.js"></script>
 <script src="~/App_Assests/js/employee.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#employeeListTable').DataTable();
+    });
+</script>

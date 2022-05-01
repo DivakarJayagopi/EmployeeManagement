@@ -1,6 +1,5 @@
 ﻿
 @{
-    ViewBag.Title = "ViewLeaveRequest";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -23,8 +22,15 @@
                                     <th>From Date</th>
                                     <th>To Date</th>
                                     <th>Reason</th>
-                                    <th>Staus</th>
-                                    <th>Comments</th>
+                                    @if (Session["IsAdmin"].ToString() == "1")
+                                    {
+                                        <th>Actions</th>
+                                    }
+                                    else
+                                    {
+                                        <th>Status</th>
+                                        <th>Comments</th>
+                                    }
                                 </tr>
                             </thead>
                             <tbody>
@@ -36,8 +42,16 @@
                                         <td>@LeaveRequest.Id</td>
                                         <td>@LeaveRequest.Id</td>
                                         <td>@LeaveRequest.Id</td>
-                                        <td><b class="badge badge-success">Accepted</b></td>
-                                        <td>Your leave request has been accepted</td>
+                                        @if (Session["IsAdmin"].ToString() == "1")
+                                        {
+                                            <td><a href="javascript:void(0)" data-id="@LeaveRequest.Id" id="acceptLeaveRequest"><b class="badge badge-success">Accept</b></a> &nbsp; <a href="javascript:void(0)" data-id="@LeaveRequest.Id" id="rejectLeaveRequest"><i class="badge badge-danger">Reject</i></a></td>
+                                        }
+                                        else
+                                        {
+                                            <td><b class="badge badge-success">Accepted</b></td>
+                                            <td>Your leave request has been accepted</td>
+                                        }
+
                                     </tr>
                                 }
 
@@ -50,28 +64,6 @@
     </div>
 </section>
 
-<div class="modal fade" tabindex="-1" role="dialog" id="leaveRejectReason">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Reject leave request</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <label>Add Resaon leave rejection</label>
-                        <textarea rows="10" cols="500" style="max-width: 100%; min-height: 100px;" class="form-control" placeholder="Please provide a reason for the leave rejection"></textarea>
-                    </div>
-                </div>
-                <button class="btn btn-block btn-danger RejectLeaveRequestButton" type="button">Reject</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script src="~/assets/js/jquery.min.js"></script>
 <script type="text/javascript" charset="utf8" src="~/assets/js/jquery.dataTables.js"></script>
 <script src="~/App_Assests/js/leave.js"></script>
@@ -80,3 +72,4 @@
         $('#leaveRequestListTable').DataTable();
     });
 </script>
+

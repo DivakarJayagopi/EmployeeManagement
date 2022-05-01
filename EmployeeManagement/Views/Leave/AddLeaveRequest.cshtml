@@ -13,35 +13,35 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
+                            <label>Select Leave Type</label>
+                            <select class="form-control LeaveType">
+                                <option value="Casual Leave">Casual Leave</option>
+                                <option value="Sick Leave">Sick Leave</option>
+                                <option value="Maternity Leave">Maternity Leave</option>
+                                <option value="Marriage Leave">Marriage Leave</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label>Select From Date</label>
-                            <input type="date" class="form-control MaxOrderCountForShop">
+                            <input type="date" class="form-control FromDate" min="@ViewBag.CurrentDate" max="3000-12-31">
                         </div>
                         <div class="form-group">
                             <label>Select To Date</label>
-                            <input type="date" class="form-control MaxOrderCountForShop">
+                            <input type="date" class="form-control ToDate" min="@ViewBag.CurrentDate" max="3000-12-31">
                         </div>
                         <div class="form-group">
                             <label>Title</label>
                             <div class="input-group">
-                                <input type="text" class="form-control ShopArea">
+                                <input type="text" class="form-control Title">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Select Leave Type</label>
-                            <select class="form-control ShopArea">
-                                <option>Casual Leave</option>
-                                <option>Sick Leave</option>
-                                <option>Maternity Leave</option>
-                                <option>Marriage Leave</option>
-                                <option>Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
                             <label>Description</label>
-                            <textarea rows="4" cols="500" class="form-control" style="min-height: 100px;"></textarea>
+                            <textarea rows="4" cols="500" class="form-control Description" style="min-height: 100px;" id="Description"></textarea>
                         </div>
-                        <span class="text-danger customErrorMessageAddEmployee"></span>
-                        <button class="btn btn-block btn-info AddEmployeeFromSubmit" type="button">Submit</button>
+                        <span class="text-danger customErrorMessageAddLeaveRequest"></span>
+                        <button class="btn btn-block btn-info AddLeaveRequestFromSubmit" id="AddLeaveRequestFromSubmit" type="button">Submit</button>
                     </div>
                 </div>
             </div>
@@ -49,3 +49,4 @@
     </div>
 </section>
 <script src="~/assets/js/jquery.min.js"></script>
+<script src="~/App_Assests/js/leave.js"></script>

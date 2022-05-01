@@ -141,11 +141,19 @@
     <Compile Include="Entities\EmployeeDbContext.cs" />
     <Compile Include="Entities\LeaveRequest.cs" />
     <Compile Include="Entities\News.cs" />
+    <Compile Include="Entities\NewsConnector.cs" />
     <Compile Include="Entities\PaySlip.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\AccountUtility.cs" />
+    <Compile Include="Utility\ChatUtility.cs" />
+    <Compile Include="Utility\DashboardUtility.cs" />
+    <Compile Include="Utility\EmployeeUtility.cs" />
+    <Compile Include="Utility\LeaveUtility.cs" />
+    <Compile Include="Utility\NewsUtility.cs" />
+    <Compile Include="Utility\PaySlipUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Assests\css\custom.css" />
@@ -401,6 +409,7 @@
     <Content Include="Views\Account\Profile.cshtml" />
     <Content Include="Views\Account\ChangePassword.cshtml" />
     <Content Include="Views\Chat\Index.cshtml" />
+    <Content Include="Views\Leave\ViewPendingRequest.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

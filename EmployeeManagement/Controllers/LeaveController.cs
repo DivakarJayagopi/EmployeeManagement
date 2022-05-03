@@ -25,8 +25,8 @@ namespace EmployeeManagement.Controllers
             if (Session["IsAdmin"] == null)
                 return RedirectToAction("Login", "Account");
 
-            var LeaveRequest = _dbContext.LeaveRequest.ToList();
-            ViewBag.LeaveRequest = LeaveRequest;
+            var CurrentDate = DateTime.Now.ToString("yyyy-MM");
+            ViewBag.CurrentDate = CurrentDate;
             return View();
         }
 
@@ -35,8 +35,28 @@ namespace EmployeeManagement.Controllers
             if (Session["IsAdmin"] == null)
                 return RedirectToAction("Login", "Account");
 
-            var LeaveRequest = _dbContext.LeaveRequest.Where(x=>x.Status.ToLower() == "pending").ToList();
-            ViewBag.LeaveRequest = LeaveRequest;
+            var IsAdmin = (int)Session["IsAdmin"];
+            var EmployeeId = Session["EmployeeId"].ToString();
+            List<LeaveRequest> LeaveRequestList = new List<LeaveRequest>();
+
+            var Listitems = (from lr in _dbContext.LeaveRequest
+                             join emp in _dbContext.Employees on lr.EmployeeId equals emp.Id
+                             where lr.Status.ToLower() == "pending"
+                             && (IsAdmin == 0 ? lr.EmployeeId == EmployeeId : true)
+                             select new Object.LeaveRequestInfo
+                             {
+                                 Id = lr.Id,
+                                 EmployeeId = emp.Id,
+                                 Name = emp.Name,
+                                 Team = emp.Team,
+                                 Title = lr.Title,
+                                 Description = lr.Description,
+                                 FromDate = lr.FromDate,
+                                 ToDate = lr.ToDate,
+                                 Comments = lr.Comments
+                             }).ToList();
+            
+            ViewBag.LeaveRequest = Listitems;
             return View();
         }
     }

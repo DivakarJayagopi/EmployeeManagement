@@ -11,7 +11,9 @@ namespace EmployeeManagement.Entities
         public string Name { get; set; }
         public string Email { get; set; }
         public long MobileNumber { get; set; }
+        public string Password { get; set; }
         public DateTime DOB { get; set; }
+        public DateTime DOJ { get; set; }
         public string Address { get; set; }
         public string Team { get; set; }
         public string Role { get; set; }

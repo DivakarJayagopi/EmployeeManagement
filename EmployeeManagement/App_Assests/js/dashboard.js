@@ -1,12 +1,12 @@
-﻿function LoadPieChart() {
+﻿function LoadPieChart(TodayBirthdayCount, TodayLeavesCount, TodayWorkAniversayCount, RemainingCount) {
     const employeeStatusPie = document.getElementById('employeeStatusPie');
     new Chart(employeeStatusPie, {
         type: 'pie',
         data: {
-            labels: ['Birthday', 'Leave', 'Anniversary', 'No Value'],
+            labels: ['Birthday', 'Leave', 'Anniversary', 'Remaining'],
             datasets: [{
                 label: '# of Votes',
-                data: [8, 10, 2, 59],
+                data: [TodayBirthdayCount, TodayLeavesCount, TodayWorkAniversayCount, RemainingCount],
                 backgroundColor: [
                     'Red',
                     'Orange',
@@ -33,15 +33,15 @@
     });
 }
 
-function LoadBarChart() {
+function LoadBarChart(TodayBirthdayCount, TodayLeavesCount, TodayWorkAniversayCount, RemainingCount) {
     const employeeStatusBar = document.getElementById('employeeStatusBar');
     new Chart(employeeStatusBar, {
         type: 'bar',
         data: {
-            labels: ['Birthday', 'Leave', 'Anniversary', 'No Value'],
+            labels: ['Birthday', 'Leave', 'Anniversary', 'Remaining'],
             datasets: [{
                 label: 'Employee Status',
-                data: [8, 10, 2, 59],
+                data: [TodayBirthdayCount, TodayLeavesCount, TodayWorkAniversayCount, RemainingCount],
                 backgroundColor: [
                     'Purple',
                     'Gray',
@@ -68,7 +68,7 @@ function LoadBarChart() {
     });
 }
 
-function LoadPieChartNormal() {
+function LoadPieChartNormal(TotalLeaveAvailableCount, TotalLeaveTakenCount) {
     const employeeStatusPieNormal = document.getElementById('employeeStatusPieNormal');
     new Chart(employeeStatusPieNormal, {
         type: 'pie',
@@ -76,7 +76,7 @@ function LoadPieChartNormal() {
             labels: ['Available', 'Taken'],
             datasets: [{
                 label: '# of Votes',
-                data: [8, 2],
+                data: [TotalLeaveAvailableCount, TotalLeaveTakenCount],
                 backgroundColor: [
                     'Red',
                     'Orange'
@@ -99,7 +99,7 @@ function LoadPieChartNormal() {
     });
 }
 
-function LoadBarChartNormal() {
+function LoadBarChartNormal(TotalLeaveAvailableCount, TotalLeaveTakenCount) {
     const employeeStatusBarNormal = document.getElementById('employeeStatusBarNormal');
     new Chart(employeeStatusBarNormal, {
         type: 'bar',
@@ -107,7 +107,7 @@ function LoadBarChartNormal() {
             labels: ['Available', 'Taken'],
             datasets: [{
                 label: 'Leave Status',
-                data: [8, 2],
+                data: [TotalLeaveAvailableCount, TotalLeaveTakenCount],
                 backgroundColor: [
                     'Red',
                     'Orange'
@@ -130,11 +130,18 @@ function LoadBarChartNormal() {
     });
 }
 
-if (IsAdmin == "1" || IsAdmin == 1) {
-    LoadPieChart();
-    LoadBarChart();
+if (IsAdmin == "1") {
+    var TotalEmployeeCount = $(".TotalEmployeeCount").text();
+    var TodayBirthdayCount = $(".TodayBirthdayCount").text();
+    var TodayLeavesCount = $(".TodayLeavesCount").text();
+    var TodayWorkAniversayCount = $(".TodayWorkAniversayCount").text();
+
+    LoadPieChart(TodayBirthdayCount, TodayLeavesCount, TodayWorkAniversayCount, RemainingCount);
+    LoadBarChart(TodayBirthdayCount, TodayLeavesCount, TodayWorkAniversayCount, RemainingCount);
 } else {
-    LoadPieChartNormal();
-    LoadBarChartNormal();
+    var TotalLeaveAvailableCount = $(".TotalLeaveAvailableCount").text();
+    var TotalLeaveTakenCount = $(".TotalLeaveTakenCount").text();
+    LoadPieChartNormal(TotalLeaveAvailableCount, TotalLeaveTakenCount);
+    LoadBarChartNormal(TotalLeaveAvailableCount, TotalLeaveTakenCount);
 }
 

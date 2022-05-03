@@ -4,12 +4,17 @@ $(document).on('click', '.AddEmployeeFromSubmit', function () {
     var Email = $(".Email").val().trim();
     var Number = $(".Number").val().trim();
     var dob = $(".dob").val().trim();
+    var doj = $(".doj").val().trim();
     var Address = $(".Address").val().trim();
     var Team = $(".Team").val().trim();
     var Role = $(".Role").val().trim();
     var IsAdmin = $(".IsAdmin").val().trim();
 
-    if (Name == "" || Email == "" || Number == "" || dob == "" || Address == "" || Team == "" || Role == "") {
+    $(".AddEmployeeFromSubmit").attr('disabled',"disabled");
+    $(".AddEmployeeFromSubmit").buttonLoader('start');
+
+
+    if (Name == "" || Email == "" || Number == "" || dob == "" || doj == "" || Address == "" || Team == "" || Role == "") {
 
         $(".customErrorMessageAddEmployee").text("All fields are Mandatory");
 
@@ -24,6 +29,9 @@ $(document).on('click', '.AddEmployeeFromSubmit', function () {
 
         if (dob == "") $(".dob").addClass("form-error");
         else $(".dob").removeClass("form-error");
+
+        if (doj == "") $(".doj").addClass("form-error");
+        else $(".doj").removeClass("form-error");
 
         if (Address == "") $(".Address").addClass("form-error");
         else $(".Address").removeClass("form-error");
@@ -54,7 +62,7 @@ $(document).on('click', '.AddEmployeeFromSubmit', function () {
         }
 
         if (IsEmailValid) {
-            var data = '{Name:"' + Name + '", Email:"' + Email + '", Number:' + Number + ', dob:"' + dob + '", Address:"' + Address + '", Team:"' + Team + '", Role:"' + Role + '", IsAdmin:' + IsAdmin + '}';
+            var data = '{Name:"' + Name + '", Email:"' + Email + '", Number:' + Number + ',Password :"Welcome@123", dob:"' + dob + '", doj:"' + doj + '", Address:"' + Address + '", Team:"' + Team + '", Role:"' + Role + '", IsAdmin:' + IsAdmin + '}';
             handleAjaxRequest(null, true, "/Method/AddEmployee", data, "CallBackAddEmployee", Name);
         }
     }
@@ -75,6 +83,8 @@ function CallBackAddEmployee(responseData, Name) {
     else {
         $(".customErrorMessageAddEmployee").text("Error on Adding employee, Try agin in few min");
     }
+    $(".AddEmployeeFromSubmit").buttonLoader('stop');
+    $(".AddEmployeeFromSubmit").removeAttr('disabled', "disabled");
 }
 
 
@@ -97,7 +107,8 @@ function CallBackGetEmployeeById(responseData) {
             $(".Name").val(EmployeeInfo.Name);
             $(".Email").val(EmployeeInfo.Email);
             $(".Number").val(EmployeeInfo.MobileNumber);
-            $(".dob").val(responseData.message.DateObject);
+            $(".dob").val(responseData.message.DateObject_dob);
+            $(".doj").val(responseData.message.DateObject_doj);
             $(".Address").val(EmployeeInfo.Address);
             $(".Team").val(EmployeeInfo.Team);
             $(".Role").val(EmployeeInfo.Role);
@@ -117,13 +128,14 @@ $(document).on('click', '#UpdateEmployeeFromSubmit', function () {
     var Name = $(".Name").val().trim();
     var Email = $(".Email").val().trim();
     var Number = $(".Number").val().trim();
-    var dob = $(".dob").val().trim();
+    var dob = $(".dob").val();
+    var doj = $(".doj").val();
     var Address = $(".Address").val().trim();
     var Team = $(".Team").val().trim();
     var Role = $(".Role").val().trim();
     var IsAdmin = $(".IsAdmin").val().trim();
 
-    if (Name == "" || Email == "" || Number == "" || dob == "" || Address == "" || Team == "" || Role == "") {
+    if (Name == "" || Email == "" || Number == "" || dob == "" || doj == "" || Address == "" || Team == "" || Role == "") {
 
         $(".customErrorMessageAddEmployee").text("All fields are Mandatory");
 
@@ -138,6 +150,9 @@ $(document).on('click', '#UpdateEmployeeFromSubmit', function () {
 
         if (dob == "") $(".dob").addClass("form-error");
         else $(".dob").removeClass("form-error");
+
+        if (doj == "") $(".doj").addClass("form-error");
+        else $(".doj").removeClass("form-error");
 
         if (Address == "") $(".Address").addClass("form-error");
         else $(".Address").removeClass("form-error");
@@ -168,7 +183,7 @@ $(document).on('click', '#UpdateEmployeeFromSubmit', function () {
         }
 
         if (IsEmailValid) {
-            var data = '{Id:"' + Id + '",Name:"' + Name + '", Email:"' + Email + '", Number:' + Number + ', dob:"' + dob + '", Address:"' + Address + '", Team:"' + Team + '", Role:"' + Role + '", IsAdmin:' + IsAdmin + '}';
+            var data = '{Id:"' + Id + '",Name:"' + Name + '", Email:"' + Email + '", Number:' + Number + ', dob:"' + dob + '", doj:"' + doj + '", Address:"' + Address + '", Team:"' + Team + '", Role:"' + Role + '", IsAdmin:' + IsAdmin + '}';
             handleAjaxRequest(null, true, "/Method/UpdateEmployee", data, "CallBackUpdateEmployee", Name);
         }
     }
@@ -180,22 +195,16 @@ function CallBackUpdateEmployee(responseData, Name) {
         var EmployeeInfo = responseData.message.EmployeeInfo;
 
         if (EmployeeInfo != "undefined" && EmployeeInfo != null && EmployeeInfo != "") {
-
-
             $("td[data-id='" + EmployeeInfo.Id + "'].UpatedName").text(EmployeeInfo.Name);
             $("td[data-id='" + EmployeeInfo.Id + "'].UpatedEmail").text(EmployeeInfo.Email);
             $("td[data-id='" + EmployeeInfo.Id + "'].UpatedMobileNumber").text(EmployeeInfo.MobileNumber);
-            $("td[data-id='" + EmployeeInfo.Id + "'].UpatedDOB").text(responseData.message.DateObject);
+            $("td[data-id='" + EmployeeInfo.Id + "'].UpatedDOB").text(responseData.message.DateObject_dob);
+            $("td[data-id='" + EmployeeInfo.Id + "'].UpatedDOJ").text(responseData.message.DateObject_doj);
             $("td[data-id='" + EmployeeInfo.Id + "'].UpatedAddress").text(EmployeeInfo.Address);
             $("td[data-id='" + EmployeeInfo.Id + "'].UpatedTeam").text(EmployeeInfo.Team);
             $("td[data-id='" + EmployeeInfo.Id + "'].UpatedRole").text(EmployeeInfo.Role);
         }
         $("#ViewEmployeeInfo").modal("hide");
-        //swal({
-        //    title: "Success",
-        //    text: "Employee" + Name + " Updated SuccessFully",
-        //    icon: "success",
-        //});
     }
     else {
         $(".customErrorMessageUpdateEmployee").text("Error on Adding employee, Try agin in few min");
@@ -223,9 +232,9 @@ $(document).on('click', '#DeleteEmployeeInfo', function () {
 function CallBackDeleteEmployee(responseData, $target) {
     if (responseData.message.status == "success") {
         $target.parent().parent().remove();
-        swal("Poof! Employee has been deleted!", {
-            icon: "success",
-        });
+        //swal("Poof! Employee has been deleted!", {
+        //    icon: "success",
+        //});
     }
     else {
         swal("Error on Deleting Employee !", {

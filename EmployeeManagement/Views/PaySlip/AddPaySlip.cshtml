@@ -13,50 +13,54 @@
                         <h4>Add Pay Slip</h4>
                     </div>
                     <div class="card-body">
-                        <p>Select Employee</p>
-                        <div class="form-group">
-                            <select id="EmployeesList" class="form-control " data-placeholder=" Select a Employee" style="width: 100%;">
-                                <option value="">Select Employee</option>
-                                <option value="Ajith">Ajith Kumar</option>
-                                <option value="Alex John">Alex John</option>
-                                <option value="Allie Grater">Allie Grater</option>
-                                <option value="Dhanesh Kumar">Dhanesh Kumar</option>
-                                <option value="Divakar Jayagopi">Divakar Jayagopi</option>
-                                <option value="Mukesh Kannan">Mukesh Kannan</option>
-                                <option value="Olive Yew">Olive Yew</option>
-                                <option value="Peg Legge">Peg Legge</option>
-                                <option value="Ramya Devaraj">Ramya Devaraj</option>
-                                <option value="Tamil Selvi">Tamil Selvi</option>
-                            </select>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="form-group">
+                                    <label>Select Employee</label>
+                                    <div class="form-group">
+                                        <select id="EmployeesList" class="form-control " data-placeholder=" Select a Employee" style="width: 100%;">
+                                            @foreach (var Employee in ViewBag.EmployeesList)
+                                            {
+                                                <option value="@Employee.Id">@Employee.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Select Month</label>
+                                    <input type="month" class="form-control PaidMonth" value="@ViewBag.CurrentDate" max="3000-12-31">
+                                </div>
+                            </div>
                         </div>
+
                         <div class="row">
                             <div class="col-md-6">
                                 <p>Earnings</p>
-                                <span>Basic : </span> <input type="text" class="form-control" />
-                                <span>DA : </span> <input type="text" class="form-control" />
-                                <span>HRA : </span> <input type="text" class="form-control" />
-                                <span>Medical Allowances  : </span> <input type="text" class="form-control" />
-                                <span>Conveyance Charges : </span> <input type="text" class="form-control" />
-                                <span>Special Allowances  : </span> <input type="text" class="form-control" />
+                                <span>Basic : </span> <input type="number" class="form-control Basic" onkeyup="SalaryCalculation()" />
+                                <span>DA : </span> <input type="number" class="form-control DA" onkeyup="SalaryCalculation()"/>
+                                <span>HRA : </span> <input type="number" class="form-control HRA" onkeyup="SalaryCalculation()"/>
+                                <span>Medical Allowances  : </span> <input type="number" class="form-control MedicalAllowances" onkeyup="SalaryCalculation()"/>
+                                <span>Conveyance Charges : </span> <input type="number" class="form-control ConveyanceCharges" onkeyup="SalaryCalculation()"/>
+                                <span>Special Allowances  : </span> <input type="number" class="form-control SpecialAllowances" onkeyup="SalaryCalculation()"/>
                                 <br />
-                                <p><b>Total Earnings :</b></p>
+                                <p><b>Total Earnings : &nbsp;&nbsp;&nbsp;&nbsp; <span class="TotalEarnings">0</span></b></p>
                             </div>
                             <div class="col-md-6">
                                 <p>Deduction</p>
-                                <span>Income Tax : </span> <input type="text" class="form-control" />
-                                <span>Educational Cess : </span> <input type="text" class="form-control" />
-                                <span>LOP : </span> <input type="text" class="form-control" />
+                                <span>Income Tax : </span> <input type="number" class="form-control IncomeTax" onkeyup="SalaryCalculation()"/>
+                                <span>Educational Cess : </span> <input type="number" class="form-control EducationalCess" onkeyup="SalaryCalculation()"/>
+                                <span>LOP : </span> <input type="number" class="form-control LOP" onkeyup="SalaryCalculation()"/>
                                 <br />
-                                <p><b>Total Deduction :</b></p>
+                                <p><b>Total Deduction : &nbsp;&nbsp;&nbsp;&nbsp; <span class="TotalDeduction">0</span></b></p>
                             </div>
                         </div>
                         <hr />
                         <div class="col-md-12 row">
                             <div class="col-md-6">
-                                <p><b>Net Pay : </b></p>
-                            </div>
-                            <div class="col-md-6">
-                                <p><b>85,000</b></p>
+                                <p><b>Net Pay : <b class="NetPay">0</b></b></p>
                             </div>
                         </div>
                         <button class="btn btn-block btn-info AddEmployeePaySlip" type="button">Submit</button>

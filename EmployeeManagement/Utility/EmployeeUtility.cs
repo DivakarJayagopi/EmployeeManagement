@@ -64,6 +64,28 @@ namespace EmployeeManagement.Utility
                     _dbContext.Employees.Remove(EmployeeInfo);
                     int count = _dbContext.SaveChanges();
                     status = count > 0;
+                    if (status)
+                    {
+                        var NewsConnectorslist = _dbContext.NewsConnector.Where(x => x.EmployeeId == Id).ToList();
+                        _dbContext.NewsConnector.RemoveRange(NewsConnectorslist);
+                        count = _dbContext.SaveChanges();
+                        status = count > 0;
+                        if (status)
+                        {
+                            var LeaveRequestlist = _dbContext.LeaveRequest.Where(x => x.EmployeeId == Id).ToList();
+                            _dbContext.LeaveRequest.RemoveRange(LeaveRequestlist);
+                            count = _dbContext.SaveChanges();
+                            status = count > 0;
+                            if (status)
+                            {
+                                var PaySliplist = _dbContext.PaySlip.Where(x => x.EmployeeId == Id).ToList();
+                                _dbContext.PaySlip.RemoveRange(PaySliplist);
+                                count = _dbContext.SaveChanges();
+                                status = count > 0;
+
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception)
@@ -79,6 +101,24 @@ namespace EmployeeManagement.Utility
             try
             {
                 var EmployeeInfo = _dbContext.Employees.FirstOrDefault(item => item.Id == Id);
+                if (EmployeeInfo != null && !string.IsNullOrEmpty(EmployeeInfo.Id))
+                {
+                    Employee = EmployeeInfo;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return Employee;
+        }
+
+        public Employees ValidateLogin(string Email, string Password)
+        {
+            Employees Employee = new Employees();
+            try
+            {
+                var EmployeeInfo = _dbContext.Employees.FirstOrDefault(item => item.Email == Email && item.Password == Password);
                 if (EmployeeInfo != null && !string.IsNullOrEmpty(EmployeeInfo.Id))
                 {
                     Employee = EmployeeInfo;

@@ -21,6 +21,7 @@
                                     <th>Email</th>
                                     <th>Mobile Number</th>
                                     <th>D.O.B</th>
+                                    <th>D.O.J</th>
                                     <th>Address</th>
                                     <th>Team</th>
                                     <th>Role</th>
@@ -35,18 +36,33 @@
                                     <td data-id="@Employee.Id" class="UpatedEmail">@Employee.Email</td>
                                     <td data-id="@Employee.Id" class="UpatedMobileNumber">@Employee.MobileNumber</td>
                                     <td data-id="@Employee.Id" class="UpatedDOB">@Employee.DOB.ToShortDateString()</td>
+                                    <td data-id="@Employee.Id" class="UpatedDOJ">@Employee.DOJ.ToShortDateString()</td>
                                     <td data-id="@Employee.Id" class="UpatedAddress">@Employee.Address</td>
                                     <td data-id="@Employee.Id" class="UpatedTeam">@Employee.Team</td>
                                     <td data-id="@Employee.Id" class="UpatedRole">@Employee.Role</td>
-                                    @if (@Employee.IsAdmin == 1)
+                                    @if (Employee.IsAdmin == 1)
                                     {
                                         <td data-id="@Employee.Id" class="Role">Admin</td>
                                     }
                                     else
                                     {
-                                        <td  data-id="@Employee.Id" class="Role">Normal</td>
+                                        <td data-id="@Employee.Id" class="Role">Normal</td>
                                     }
-                                    <td class="text-center"><a href="javascript:void(0);" data-id="@Employee.Id" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" id="EditEmployeeInfo"><i class="fas fa-light fa-pen text-info"></i></a> &nbsp; <a href="javascript:void(0);" data-id="@Employee.Id" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" id="DeleteEmployeeInfo"><i class="fas fa-light fa-trash text-danger"></i></a></td>
+                                    @if (Session["EmployeeId"].ToString() == Employee.Id)
+                                    {
+                                        <td class="text-center">
+                                            <button class="btn" data-id="@Employee.Id" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" id="EditEmployeeInfo"><i class="fas fa-light fa-pen text-info"></i></button>
+                                            <button class="btn" data-id="@Employee.Id" disabled data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" id="DeleteEmployeeInfo"><i class="fas fa-light fa-trash text-danger"></i></button>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-center">
+                                            <button class="btn" data-id="@Employee.Id" id="EditEmployeeInfo"><i class="fas fa-light fa-pen text-info"></i></button>
+                                            <button class="btn" data-id="@Employee.Id" id="DeleteEmployeeInfo"><i class="fas fa-light fa-trash text-danger"></i></button>
+                                        </td>
+                                    }
+
                                 </tr>
 
                             }
@@ -68,7 +84,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <input type="hidden" class="EmployeeId"/>
+                <input type="hidden" class="EmployeeId" />
                 <div class="form-group">
                     <label>Name</label>
                     <input type="text" class="form-control Name">
@@ -86,6 +102,10 @@
                 <div class="form-group">
                     <label>Date of Birth</label>
                     <input type="date" class="form-control dob" value="2022-01-01" min="1900-01-01" max="3000-12-31">
+                </div>
+                <div class="form-group">
+                    <label>Date of Joining</label>
+                    <input type="date" class="form-control doj" value="2022-01-01" min="1900-01-01" max="3000-12-31">
                 </div>
                 <div class="form-group">
                     <label>Address</label>

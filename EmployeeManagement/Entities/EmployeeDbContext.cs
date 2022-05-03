@@ -16,6 +16,7 @@ namespace EmployeeManagement.Entities
         public DbSet<Employees> Employees { get; set; }
         public DbSet<LeaveRequest> LeaveRequest { get; set; }
         public DbSet<News> News { get; set; }
+        public DbSet<NewsConnector> NewsConnector { get; set; }
         public DbSet<PaySlip> PaySlip { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

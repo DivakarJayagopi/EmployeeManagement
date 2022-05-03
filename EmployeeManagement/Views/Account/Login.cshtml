@@ -52,12 +52,12 @@
                                         <input id="Password" type="password" class="form-control" name="password" tabindex="2">
                                     </div>
 
-                                    <div class="form-group">
+                                    @*<div class="form-group">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
                                             <label class="custom-control-label" for="remember-me">Remember Me</label>
                                         </div>
-                                    </div>
+                                    </div>*@
                                     <span class="text-danger customErrorMessageLogin"></span>
                                     <div class="form-group">
                                         <button type="button" class="btn btn-primary btn-lg btn-block" id="loginFormSubmit" tabindex="4">
@@ -92,8 +92,6 @@
             $(".customErrorMessageLogin").text("");
             var email = $("#email").val();
             var Password = $("#Password").val();
-            var IsValid = false;
-            var IsAdmin = false;
             if (email == "" || Password == "") {
                 if (email == "") $("#email").addClass("form-error");
                 else $("#email").removeClass("form-error");
@@ -103,22 +101,11 @@
 
                 $(".customErrorMessageLogin").text("Validation Failed, recheck the form !");
             } else {
-                if (email == "admin" && Password == "admin") {
-                    IsValid = true;
-                    IsAdmin = true;
-                } else if (email == "123456" && Password == "123456") {
-                    IsValid = true;
-                } else {
-                    $(".customErrorMessageLogin").text("Invalid Login !");
-                }
-            }
-            if (IsValid) {
-
                 $("#email").removeClass("form-error");
                 $("#Password").removeClass("form-error");
                 $(".customErrorMessageLogin").text("");
 
-                var data = '{IsAdmin:"' + IsAdmin + '"}';
+                var data = '{Email:"' + email + '",Password:"' + Password + '"}';
                 handleAjaxRequest(null, true, "/Method/ValidateUserLogin", data, "CallBackValidateLogin");
             }
         });

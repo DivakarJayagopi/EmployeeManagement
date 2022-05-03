@@ -30,10 +30,55 @@
         $("textarea").removeClass("form-error");
 
         $(".customErrorMessageAddLeaveRequest").text("");
-        var data = '{Type:"' + LeaveType + '", Title:"' + Title + '", FromDate:"' + FromDate + '", ToDate:"' + ToDate + '", Reason:"' + Description + '", Status:"pending"}';
+        var data = '{Type:"' + LeaveType + '", Title:"' + Title + '", FromDate:"' + FromDate + '", ToDate:"' + ToDate + '", Description:"' + Description + '", Status:"pending"}';
         handleAjaxRequest(null, true, "/Method/AddLeaveRequest", data, "CallBackAddLeaveRequest");
     }
 });
+
+$(document).on('click', '.SelectMonth', function () {
+    var SelectedDate = $(".LeaveRequestMonth").val();
+    if (SelectedDate != "undefined" && SelectedDate != null && SelectedDate != "") {
+        $(".LeaveRequestListBody").html("");
+        var data = '{SelectedDate:"' + SelectedDate + '"}';
+        handleAjaxRequest(null, true, "/Method/GetLeaveRquestByDate", data, "CallBackGetLeaveRquestByDate");
+    }
+});
+
+function CallBackGetLeaveRquestByDate(responseData) {
+    if (responseData.message.status == "success") {
+        var LeaveRequestList = responseData.message.LeaveRequestList;
+        if (LeaveRequestList != "undefined" && LeaveRequestList != null && LeaveRequestList != "") {
+            var RequestListHTML = "";
+            $.each(LeaveRequestList, function (key, value) {
+                var Comments = value.Comments;
+                if (typeof (Comments) == "undefined" || Comments == null || Comments == null) {
+                    Comments = "";
+                }
+                RequestListHTML += "<tr>";
+                RequestListHTML += "<td>" + value.Name + "</td>";
+                RequestListHTML += "<td>" + value.Team + "</td>";
+                RequestListHTML += "<td>" + value.Title + "</td>";
+                RequestListHTML += "<td>" + value.FromDateString + "</td>";
+                RequestListHTML += "<td>" + value.ToDateString + "</td>";
+                RequestListHTML += "<td>" + value.Description + "</td>";
+                RequestListHTML += "<td>" + value.Status + "</td>";
+                RequestListHTML += "<td>" + value.Comments + "</td>";
+                RequestListHTML += "/<tr>";
+            });
+            
+        } else {
+            RequestListHTML += "<tr>";
+            RequestListHTML += "<td colspan=8 style='text-align:center;'> No data available in table </td>";
+            RequestListHTML += "/<tr>";
+        }
+        $(".LeaveRequestListBody").html(RequestListHTML);
+        $('#leaveRequestListTable').DataTable();
+    }
+    else {
+
+    }
+    $("#leaveRequestList").show("hide");
+}
 
 $(document).on('change', '.FromDate', function () {
     var FromDateValue = $(this).val();
@@ -60,14 +105,38 @@ function CallBackAddLeaveRequest(responseData) {
 }
 
 $(document).on('click', '#rejectLeaveRequest', function () {
+    var Id = $(this).attr("data-id");
+    var EmployeeId = $(this).attr("data-employeeId");
+    $(".SelectedId").val(Id);
+    $(".SelectedEmployeeId").val(EmployeeId);
     $("#leaveRejectReason").modal("show");
 });
 
-$(document).on('click', '#RejectLeaveRequestButton', function () {
-    var data = '{Id:"' + Id + '", Status:"Rejected", EmployeeId:' + EmployeeId + ', Reason:' + Reason + '}';
-    handleAjaxRequest(null, true, "/Method/UpdateLeaveRequest", data, "CallBackAddLeaveRequest");
-    $("#leaveRejectReason").modal("show");
+$(document).on('click', '.RejectLeaveRequestButton', function () {
+    var Id = $(".SelectedId").val();
+    var EmployeeId = $(".SelectedEmployeeId").val();    
+    var Reason = $(".LeaveRejectionReason").val().trim();
+    if (Reason != "undefined" && Reason != null && Reason != "") {
+        $(".LeaveRejectionReason").removeClass("form-error");
+        $(".LeaveRejectionErrorMessage").text("");
+        $("#leaveRejectReason").modal("hide");
+        var data = '{Id:"' + Id + '", Status:"Rejected", EmployeeId:"' + EmployeeId + '", Reason:"' + Reason + '"}';
+        handleAjaxRequest(null, true, "/Method/UpdateLeaveRequest", data, "CallBackUpdateLeaveRequest", Id);
+        $("#leaveRejectReason").modal("show");
+    } else {
+        $(".LeaveRejectionReason").addClass("form-error");
+        $(".LeaveRejectionErrorMessage").text("Enter Valid Reason for rejection");
+    }
 });
+
+function CallBackUpdateLeaveRequest(responseData, Id) {
+    if (responseData.message.status == "success") {
+        var $target = $("a[data-id='" + Id + "']#acceptLeaveRequest").parent().parent().remove();
+    }
+    else {
+
+    }
+}
 
 $(document).on('click', '#acceptLeaveRequest', function () {
     swal({
@@ -79,8 +148,10 @@ $(document).on('click', '#acceptLeaveRequest', function () {
     })
         .then((willDelete) => {
             if (willDelete) {
-                var data = '{Id:"' + Id + '", Status:"Accepted", EmployeeId:' + EmployeeId + ', Reason:""}';
-                handleAjaxRequest(null, true, "/Method/UpdateLeaveRequest", data, "CallBackAddLeaveRequest");
+                var Id = $(this).attr("data-id");
+                var EmployeeId = $(this).attr("data-employeeId");
+                var data = '{Id:"' + Id + '", Status:"Accepted", EmployeeId:"' + EmployeeId + '", Reason:"Your Leave Request has been Accepcted"}';
+                handleAjaxRequest(null, true, "/Method/UpdateLeaveRequest", data, "CallBackUpdateLeaveRequest", Id);
             }
         });
 });

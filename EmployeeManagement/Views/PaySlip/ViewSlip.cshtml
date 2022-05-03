@@ -13,82 +13,168 @@
                         <h4>View PaySlip</h4>
                     </div>
                     <div class="card-body">
-                        <div class="form-group">
-                            <label>Select Month</label>
-                            <input type="month" class="form-control MaxOrderCountForShop">
-                        </div>
-                        <div class="form-group">
-                            <h3>Salary Info</h3> 
-                            <button class="text-right btn btn-success">Download As PDF</button>
-                            <br /><br />
+                        @if (Session["IsAdmin"].ToString() == "1")
+                        {
                             <div class="row">
-                                <div class="col-md-6">
-                                    <p><b>Earnings</b></p>
-                                    <table class="display" style="width:100%">
-                                        <tbody>
-                                            <tr>
-                                                <td>Basic</td>
-                                                <td>20,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>DA</td>
-                                                <td>5,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>HRA</td>
-                                                <td>3,500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Medical Allowances</td>
-                                                <td>500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Conveyance Charges</td>
-                                                <td>500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Special Allowances</td>
-                                                <td>500</td>
-                                            </tr>
-                                            <tr>
-                                                <td><p><b>Total Earnings :</b></p></td>
-                                                <td><p><b>30,000</b></p></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                   
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label>Select Employee</label>
+                                        <div class="form-group">
+                                            <select id="EmployeesList" class="form-control " data-placeholder=" Select a Employee" style="width: 100%;">
+                                                @foreach (var Employee in ViewBag.EmployeesList)
+                                                {
+                                                    <option value="@Employee.Id">@Employee.Name</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <p><b>Deduction</b></p>
-                                    <table class="display" style="width:100%">
-                                        <tbody>
-                                            <tr>
-                                                <td>LOP</td>
-                                                <td>0</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Income Tax</td>
-                                                <td>2,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Educational Cess</td>
-                                                <td>0</td>
-                                            </tr>
-                                            <tr>
-                                                <td><p><b>Total Deduction :</b></p></td>
-                                                <td><p><b>2,000</b></p></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>Select Month</label>
+                                        <input type="month" class="form-control PaidMonth" value="@ViewBag.CurrentDate"  min="@ViewBag.MinimumDate" max="3000-12-31">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <button class="btn btn-block btn-info SelectPaySlipMonth" id="SelectPaySlipMonth" type="button" style="margin:28px 0px 0px 0px;">Submit</button>
+                                    </div>
                                 </div>
                             </div>
-                            <hr />
-                            <div class="col-md-12 row">
-                                <div class="col-md-6">
-                                    <p><b>Net Pay : </b></p>
+                        }
+                        else
+                        {
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <label>Select Month</label>
+                                        <input type="month" class="form-control PaidMonth" value="@ViewBag.CurrentDate" min="@ViewBag.MinimumDate" max="3000-12-31">
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <p><b>28,000</b></p>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <button class="btn btn-block btn-info SelectPaySlipMonth" id="SelectPaySlipMonth" type="button" style="margin:28px 0px 0px 0px;">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="noDataFound" style="display:none;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="container">
+                                        <br /><br /><br />
+                                        <h1 class="text-warning text-center">No Data found</h1>
+                                        <br /><br /><br />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="SalaryInfo" style="display:none;">
+                            <div class="form-group">
+                                <h3>Salary Info</h3>
+                                @*<button class="text-right btn btn-success">Download As PDF</button>*@
+                                <br /><br />
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <table class="display" style="width:100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td class="Name"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Role</td>
+                                                    <td class="Role"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <table class="display" style="width:100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Team</td>
+                                                    <td class="Team"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Date of joining</td>
+                                                    <td class="doj"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <span><b>Earnings</b></span>
+                                        <table class="display" style="width:100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Basic</td>
+                                                    <td class="Basic">0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>DA</td>
+                                                    <td class="DA">0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>HRA</td>
+                                                    <td class="HRA">0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Medical Allowances</td>
+                                                    <td class="MedicalAllowances">0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Conveyance Charges</td>
+                                                    <td class="ConveyanceCharges">0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Special Allowances</td>
+                                                    <td class="SpecialAllowances">0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><p><b>Total Earnings :</b></p></td>
+                                                    <td><p><b class="TotalEarnings">0</b></p></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span><b>Deduction</b></span>
+                                        <table class="display" style="width:100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Income Tax</td>
+                                                    <td class="IncomeTax">0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Educational Cess</td>
+                                                    <td class="EducationalCess">0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>LOP</td>
+                                                    <td class="LOP">0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><p><b>Total Deduction :</b></p></td>
+                                                    <td><p><b class="TotalDeduction">0</b></p></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="col-md-12 row">
+                                    <div class="col-md-6">
+                                        <p><b>Net Pay : </b></p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><b class="NetPay">0</b></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -100,3 +186,4 @@
 </section>
 
 <script src="~/assets/js/jquery.min.js"></script>
+<script src="~/App_Assests/js/payslip.js"></script>

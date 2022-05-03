@@ -9,14 +9,15 @@ namespace EmployeeManagement.Entities
     {
         public string Id { get; set; }
         public string EmployeeId { get; set; }
-        public int Basic { get; set; }
-        public int DA { get; set; }
-        public int HRA { get; set; }
-        public int MedicalAllowances { get; set; }
-        public int ConveyanceCharges { get; set; }
-        public int SpecialAllowances { get; set; }
-        public int IncomeTax { get; set; }
-        public int EducationalCess { get; set; }
-        public int LOP { get; set; }
+        public long Basic { get; set; }
+        public long DA { get; set; }
+        public long HRA { get; set; }
+        public long MedicalAllowances { get; set; }
+        public long ConveyanceCharges { get; set; }
+        public long SpecialAllowances { get; set; }
+        public long IncomeTax { get; set; }
+        public long EducationalCess { get; set; }
+        public long LOP { get; set; }
+        public DateTime PaidMonth { get; set; }
     }
 }

@@ -23,7 +23,7 @@
                             <h4>Total Employees</h4>
                         </div>
                         <div class="card-body">
-                            59
+                            <span class="TotalEmployeeCount">@ViewBag.TotalEmployeeCount</span>
                         </div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                             <h4>Today Birthday's</h4>
                         </div>
                         <div class="card-body">
-                            8
+                            <span class="TodayBirthdayCount">@ViewBag.TodayBirthdayCount</span>
                         </div>
                     </div>
                 </div>
@@ -56,14 +56,14 @@
                         </div>
                     </div>
                     <div class="card-icon shadow-primary bg-primary">
-                        <i class="fas fa-solid fa-list-ol"></i> 
+                        <i class="fas fa-solid fa-list-ol"></i>
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
                             <h4>Today Leave</h4>
                         </div>
                         <div class="card-body">
-                            10
+                            <span class="TodayLeavesCount">@ViewBag.TodayLeavesCount</span>
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                             <h4>Today Anniversary</h4>
                         </div>
                         <div class="card-body">
-                            2
+                            <span class="TodayWorkAniversayCount">@ViewBag.TodayWorkAniversayCount</span>=
                         </div>
                     </div>
                 </div>
@@ -100,30 +100,111 @@
                         <div class="table-responsive table-invoice">
                             <table class="table table-striped">
                                 <tr>
-                                    <th>Id</th>
                                     <th>Name</th>
+                                    <th>Email</th>
+                                    <th>MobileNumber</th>
+                                    <th>Joinig Date</th>
                                     <th>Team</th>
                                     <th>Role</th>
-                                    <th>Joinig Date</th>
                                 </tr>
+                                @if (ViewBag.TodayWorkAniversay.Count > 0)
+                                {
+                                    foreach (var Employee in ViewBag.TodayWorkAniversay)
+                                    {
+                                        <tr>
+                                            <td data-id="@Employee.Id" class="UpatedName">@Employee.Name</td>
+                                            <td data-id="@Employee.Id" class="UpatedEmail">@Employee.Email</td>
+                                            <td data-id="@Employee.Id" class="UpatedMobileNumber">@Employee.MobileNumber</td>
+                                            <td data-id="@Employee.Id" class="UpatedDOB">@Employee.DOJ.ToShortDateString()</td>
+                                            <td data-id="@Employee.Id" class="UpatedTeam">@Employee.Team</td>
+                                            <td data-id="@Employee.Id" class="UpatedRole">@Employee.Role</td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="6" style="text-align:center"><b class="text-center text-warning">No Data Found</b></td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Today Birthday Employees List</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive table-invoice">
+                            <table class="table table-striped">
                                 <tr>
-                                    <td>SFS0018</td>
-                                    <td class="font-weight-600">John Alex</td>
-                                    <td><div class="badge badge-warning">Development</div></td>
-                                    <td>Developer</td>
-                                    <td>
-                                        Aug 20, 1997
-                                    </td>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>MobileNumber</th>
+                                    <th>Date Of Birth</th>
+                                    <th>Team</th>
+                                    <th>Role</th>
                                 </tr>
+                                @if (ViewBag.LeaveEmployees.Count > 0)
+                                {
+                                    foreach (var Employee in ViewBag.LeaveEmployees)
+                                    {
+                                        <tr>
+                                            <td data-id="@Employee.Id" class="UpatedName">@Employee.Name</td>
+                                            <td data-id="@Employee.Id" class="UpatedEmail">@Employee.Email</td>
+                                            <td data-id="@Employee.Id" class="UpatedMobileNumber">@Employee.MobileNumber</td>
+                                            <td data-id="@Employee.Id" class="UpatedDOB">@Employee.DOB.ToShortDateString()</td>
+                                            <td data-id="@Employee.Id" class="UpatedTeam">@Employee.Team</td>
+                                            <td data-id="@Employee.Id" class="UpatedRole">@Employee.Role</td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="6" style="text-align:center"><b class="text-center text-warning">No Data Found</b></td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Today Leave Employees List</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive table-invoice">
+                            <table class="table table-striped">
                                 <tr>
-                                    <td>SFS0112</td>
-                                    <td class="font-weight-600">Ajith Kumar</td>
-                                    <td><div class="badge badge-success">Testing</div></td>
-                                    <td>Junior Tester</td>
-                                    <td>
-                                        Apr 30, 1992
-                                    </td>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>MobileNumber</th>
+                                    <th>Team</th>
+                                    <th>Role</th>
                                 </tr>
+                                @if (ViewBag.LeaveEmployees.Count > 0)
+                                {
+                                    foreach (var Employee in ViewBag.LeaveEmployees)
+                                    {
+                                        <tr>
+                                            <td data-id="@Employee.Id" class="UpatedName">@Employee.Name</td>
+                                            <td data-id="@Employee.Id" class="UpatedEmail">@Employee.Email</td>
+                                            <td data-id="@Employee.Id" class="UpatedMobileNumber">@Employee.MobileNumber</td>
+                                            <td data-id="@Employee.Id" class="UpatedTeam">@Employee.Team</td>
+                                            <td data-id="@Employee.Id" class="UpatedRole">@Employee.Role</td>
+                                        </tr>
+                                    }
+                                }
                             </table>
                         </div>
                     </div>
@@ -156,153 +237,199 @@
 }
 else
 {
-    <section class="section">
-        <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-12">
-                <div class="card card-statistic-2">
-                    <div class="card-stats">
-                        <div class="card-stats-title">
-                            Leave Statistics
-                        </div>
-                    </div>
-                    <div class="card-icon shadow-primary bg-primary">
-                        <i class="fas fa-archive"></i>
-                    </div>
-                    <div class="card-wrap">
-                        <div class="card-header">
-                            <h4>Available Leave</h4>
-                        </div>
-                        <div class="card-body">
-                            8
-                        </div>
+<section class="section">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-12">
+            <div class="card card-statistic-2">
+                <div class="card-stats">
+                    <div class="card-stats-title">
+                        Leave Statistics
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12">
-                <div class="card card-statistic-2">
-                    <div class="card-stats">
-                        <div class="card-stats-title">
-                            Leave Statistics
-                        </div>
-                    </div>
-                    <div class="card-icon shadow-primary bg-primary">
-                        <i class="fas fa-solid fa-plane-departure"></i>
-                    </div>
-                    <div class="card-wrap">
-                        <div class="card-header">
-                            <h4>Leave Taken</h4>
-                        </div>
-                        <div class="card-body">
-                            2
-                        </div>
-                    </div>
+                <div class="card-icon shadow-primary bg-primary">
+                    <i class="fas fa-archive"></i>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12">
-                <div class="card card-statistic-2">
-                    <div class="card-stats">
-                        <div class="card-stats-title">
-                            Birthday Statistics
-                        </div>
+                <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>Available Leave</h4>
                     </div>
-                    <div class="card-icon shadow-primary bg-primary">
-                        <i class="fas fa-solid fa-gift"></i>
-                    </div>
-                    <div class="card-wrap">
-                        <div class="card-header">
-                            <h4>Today Birthday's</h4>
-                        </div>
-                        <div class="card-body">
-                            10
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12">
-                <div class="card card-statistic-2">
-                    <div class="card-stats">
-                        <div class="card-stats-title">
-                            Anniversary Statistics
-                        </div>
-                    </div>
-                    <div class="card-icon shadow-primary bg-primary">
-                        <i class="fas fa-shopping-bag"></i>
-                    </div>
-                    <div class="card-wrap">
-                        <div class="card-header">
-                            <h4>Today Anniversary</h4>
-                        </div>
-                        <div class="card-body">
-                            2
-                        </div>
+                    <div class="card-body">
+                        <span class="TotalLeaveAvailableCount">@ViewBag.TotalLeaveAvailableCount</span>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="col-lg-3 col-md-3 col-sm-12">
+            <div class="card card-statistic-2">
+                <div class="card-stats">
+                    <div class="card-stats-title">
+                        Leave Statistics
+                    </div>
+                </div>
+                <div class="card-icon shadow-primary bg-primary">
+                    <i class="fas fa-solid fa-plane-departure"></i>
+                </div>
+                <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>Leave Taken</h4>
+                    </div>
+                    <div class="card-body">
+                        <span class="TotalLeaveTakenCount">@ViewBag.TotalLeaveTakenCount</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12">
+            <div class="card card-statistic-2">
+                <div class="card-stats">
+                    <div class="card-stats-title">
+                        Birthday Statistics
+                    </div>
+                </div>
+                <div class="card-icon shadow-primary bg-primary">
+                    <i class="fas fa-solid fa-gift"></i>
+                </div>
+                <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>Today Birthday's</h4>
+                    </div>
+                    <div class="card-body">
+                        <span class="TodayBirthdayCount">@ViewBag.TodayBirthdayCount</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12">
+            <div class="card card-statistic-2">
+                <div class="card-stats">
+                    <div class="card-stats-title">
+                        Anniversary Statistics
+                    </div>
+                </div>
+                <div class="card-icon shadow-primary bg-primary">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>Today Anniversary</h4>
+                    </div>
+                    <div class="card-body">
+                        <span class="TodayWorkAniversayCount">@ViewBag.TodayWorkAniversayCount</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Today Anniversay Employees List</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive table-invoice">
-                            <table class="table table-striped">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Today Anniversay Employees List</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive table-invoice">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>MobileNumber</th>
+                                <th>Joinig Date</th>
+                                <th>Team</th>
+                                <th>Role</th>
+                            </tr>
+                            @if (ViewBag.TodayWorkAniversay.Count > 0)
+                            {
+                                foreach (var Employee in ViewBag.TodayWorkAniversay)
+                                {
+                                    <tr>
+                                        <td data-id="@Employee.Id" class="UpatedName">@Employee.Name</td>
+                                        <td data-id="@Employee.Id" class="UpatedEmail">@Employee.Email</td>
+                                        <td data-id="@Employee.Id" class="UpatedMobileNumber">@Employee.MobileNumber</td>
+                                        <td data-id="@Employee.Id" class="UpatedDOB">@Employee.DOJ.ToShortDateString()</td>
+                                        <td data-id="@Employee.Id" class="UpatedTeam">@Employee.Team</td>
+                                        <td data-id="@Employee.Id" class="UpatedRole">@Employee.Role</td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Team</th>
-                                    <th>Role</th>
-                                    <th>Joinig Date</th>
+                                    <td colspan="6" style="text-align:center"><b class="text-center text-warning">No Data Found</b></td>
                                 </tr>
-                                <tr>
-                                    <td>SFS0018</td>
-                                    <td class="font-weight-600">John Alex</td>
-                                    <td><div class="badge badge-warning">Development</div></td>
-                                    <td>Developer</td>
-                                    <td>
-                                        Aug 20, 1997
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>SFS0112</td>
-                                    <td class="font-weight-600">Ajith Kumar</td>
-                                    <td><div class="badge badge-success">Testing</div></td>
-                                    <td>Junior Tester</td>
-                                    <td>
-                                        Apr 30, 1992
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
+                            }
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Leave Status</h4>
-                    </div>
-                    <div class="card-body">
-                        <canvas id="employeeStatusPieNormal" width="400" height="400"></canvas>
-                    </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Today Birthday Employees List</h4>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Leave Status</h4>
-                    </div>
-                    <div class="card-body">
-                        <canvas id="employeeStatusBarNormal" width="400" height="400"></canvas>
+                <div class="card-body">
+                    <div class="table-responsive table-invoice">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>MobileNumber</th>
+                                <th>Date Of Birth</th>
+                                <th>Team</th>
+                                <th>Role</th>
+                            </tr>
+                            @if (ViewBag.TodayBirthday.Count > 0)
+                            {
+                                foreach (var Employee in ViewBag.TodayBirthday)
+                                {
+                                    <tr>
+                                        <td data-id="@Employee.Id" class="UpatedName">@Employee.Name</td>
+                                        <td data-id="@Employee.Id" class="UpatedEmail">@Employee.Email</td>
+                                        <td data-id="@Employee.Id" class="UpatedMobileNumber">@Employee.MobileNumber</td>
+                                        <td data-id="@Employee.Id" class="UpatedDOB">@Employee.DOB.ToShortDateString()</td>
+                                        <td data-id="@Employee.Id" class="UpatedTeam">@Employee.Team</td>
+                                        <td data-id="@Employee.Id" class="UpatedRole">@Employee.Role</td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="6" style="text-align:center"><b class="text-center text-warning">No Data Found</b></td>
+                                </tr>
+                            }
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Leave Status</h4>
+                </div>
+                <div class="card-body">
+                    <canvas id="employeeStatusPieNormal" width="400" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Leave Status</h4>
+                </div>
+                <div class="card-body">
+                    <canvas id="employeeStatusBarNormal" width="400" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 }
 
 
@@ -312,5 +439,9 @@ else
 
 <script>
     var IsAdmin = @Session["IsAdmin"].ToString();
+    var RemainingCount = @ViewBag.RemainingCount;
 </script>
 <script src="~/App_Assests/js/dashboard.js"></script>
+<script>
+
+</script>

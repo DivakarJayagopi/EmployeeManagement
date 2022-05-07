@@ -20,6 +20,7 @@
                                     @if (Session["IsAdmin"].ToString() == "1")
                                     {
                                         <th>Name</th>
+                                        <th>Employee Code</th>
                                         <th>Team</th>
                                     }
                                     <th>Title</th>
@@ -39,6 +40,7 @@
                                     @if (Session["IsAdmin"].ToString() == "1")
                                     {
                                         <td>@LeaveRequest.Name</td>
+                                        <td>KT-@LeaveRequest.EmployeeCode</td>
                                         <td>@LeaveRequest.Team</td>
                                     }
                                     <td>@LeaveRequest.Title</td>

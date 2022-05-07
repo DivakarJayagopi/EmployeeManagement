@@ -1,3 +1,17 @@
 ﻿.form-error {
     border: 1px solid red;
 }
+
+.EmployeeChatInfo {
+    padding-bottom: 0px;
+}
+
+.EmployeeChatInfo:hover {
+    cursor: pointer;
+    background-color: #e3e3e3;
+    border-radius: 10px;
+}
+
+.EmployeeList li.EmployeeChatInfo {
+    padding: 5px;
+}

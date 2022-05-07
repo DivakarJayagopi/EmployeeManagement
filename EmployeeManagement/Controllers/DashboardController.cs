@@ -30,7 +30,7 @@ namespace EmployeeManagement.Controllers
                 List<Employees> LeaveEmployees = new List<Employees>();
                 foreach (var Employee in TotalEmployee)
                 {
-                    var LeaveRequestList = _dbContext.LeaveRequest.Where(x => ((x.FromDate.Month == CurrentDate.Month && x.FromDate.Day == CurrentDate.Day && x.FromDate.Year == CurrentDate.Year) || (x.ToDate.Month == CurrentDate.Month && x.ToDate.Day == CurrentDate.Day && x.ToDate.Year == CurrentDate.Year)) && x.EmployeeId == Employee.Id).ToList();
+                    var LeaveRequestList = _dbContext.LeaveRequest.Where(x => ((x.FromDate.Month == CurrentDate.Month && x.FromDate.Day == CurrentDate.Day && x.FromDate.Year == CurrentDate.Year) || (x.ToDate.Month == CurrentDate.Month && x.ToDate.Day == CurrentDate.Day && x.ToDate.Year == CurrentDate.Year) && x.Status.ToLower() == "accepted") && x.EmployeeId == Employee.Id).ToList();
                     if(LeaveRequestList != null && LeaveRequestList.Count > 0)
                     {
                         foreach(var LeaveRequest in LeaveRequestList)
@@ -75,7 +75,7 @@ namespace EmployeeManagement.Controllers
                 int TodayBirthdayCount = TodayBirthday.Count;
                 var TodayWorkAniversay = _dbContext.Employees.Where(x => x.DOJ.Month == CurrentDate.Month && x.DOJ.Day == CurrentDate.Day).ToList();
                 int TodayWorkAniversayCount = TodayWorkAniversay.Count;
-                var TotalLeaveTaken = _dbContext.LeaveRequest.Where(x => ((x.FromDate.Year == CurrentDate.Year) || (x.ToDate.Year == CurrentDate.Year)) && x.EmployeeId == EmployeeId).ToList();
+                var TotalLeaveTaken = _dbContext.LeaveRequest.Where(x => ((x.FromDate.Year == CurrentDate.Year) || (x.ToDate.Year == CurrentDate.Year)) && x.EmployeeId == EmployeeId && x.Status.ToLower() == "accepted").ToList();
                 int TotalCount = 0;
                 foreach (var LeaveTaken in TotalLeaveTaken)
                 {

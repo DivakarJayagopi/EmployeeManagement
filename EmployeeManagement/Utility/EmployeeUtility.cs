@@ -15,11 +15,13 @@ namespace EmployeeManagement.Utility
             bool status = false;
             try
             {
+                var EmployeeInfo = _dbContext.Employees.OrderByDescending(x => x.CreatedDate).FirstOrDefault();
+                employee.EmployeeCode = EmployeeInfo.EmployeeCode + 1;
                 _dbContext.Employees.Add(employee);
                 int count = _dbContext.SaveChanges();
                 status = count > 0;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -53,6 +55,51 @@ namespace EmployeeManagement.Utility
             return status;
         }
 
+        public bool UpdateEmployeeInfo(Employees employee)
+        {
+            bool status = false;
+            try
+            {
+                var EmployeeInfo = _dbContext.Employees.FirstOrDefault(item => item.Id == employee.Id);
+                if (EmployeeInfo != null && !string.IsNullOrEmpty(EmployeeInfo.Id))
+                {
+                    EmployeeInfo.Name = employee.Name;
+                    EmployeeInfo.ProfileImage = employee.ProfileImage;
+                    EmployeeInfo.Email = employee.Email;
+                    EmployeeInfo.MobileNumber = employee.MobileNumber;
+                    EmployeeInfo.Address = employee.Address;
+                    int count = _dbContext.SaveChanges();
+                    status = count > -1;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return status;
+        }
+
+        public bool UpdatePassword(string Id, string Password)
+        {
+            bool status = false;
+            try
+            {
+                var EmployeeInfo = _dbContext.Employees.FirstOrDefault(item => item.Id == Id);
+                if (EmployeeInfo != null && !string.IsNullOrEmpty(EmployeeInfo.Id))
+                {
+                    EmployeeInfo.Password = Password;
+                    EmployeeInfo.ModifiedDate = DateTime.Now;
+                    int count = _dbContext.SaveChanges();
+                    status = count > -1;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return status;
+        }
+
         public bool DeleteEmployee(string Id)
         {
             bool status = false;
@@ -63,25 +110,25 @@ namespace EmployeeManagement.Utility
                 {
                     _dbContext.Employees.Remove(EmployeeInfo);
                     int count = _dbContext.SaveChanges();
-                    status = count > 0;
+                    status = count != -1;
                     if (status)
                     {
                         var NewsConnectorslist = _dbContext.NewsConnector.Where(x => x.EmployeeId == Id).ToList();
                         _dbContext.NewsConnector.RemoveRange(NewsConnectorslist);
                         count = _dbContext.SaveChanges();
-                        status = count > 0;
+                        status = count != -1;
                         if (status)
                         {
                             var LeaveRequestlist = _dbContext.LeaveRequest.Where(x => x.EmployeeId == Id).ToList();
                             _dbContext.LeaveRequest.RemoveRange(LeaveRequestlist);
                             count = _dbContext.SaveChanges();
-                            status = count > 0;
+                            status = count != -1;
                             if (status)
                             {
                                 var PaySliplist = _dbContext.PaySlip.Where(x => x.EmployeeId == Id).ToList();
                                 _dbContext.PaySlip.RemoveRange(PaySliplist);
                                 count = _dbContext.SaveChanges();
-                                status = count > 0;
+                                status = count != -1;
 
                             }
                         }
@@ -101,6 +148,42 @@ namespace EmployeeManagement.Utility
             try
             {
                 var EmployeeInfo = _dbContext.Employees.FirstOrDefault(item => item.Id == Id);
+                if (EmployeeInfo != null && !string.IsNullOrEmpty(EmployeeInfo.Id))
+                {
+                    Employee = EmployeeInfo;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return Employee;
+        }
+
+        public List<Employees> GetAllEmployees()
+        {
+            List<Employees> Employees = new List<Employees>();
+            try
+            {
+                var EmployeesList = _dbContext.Employees.ToList();
+                if (EmployeesList != null && EmployeesList.Count > 0)
+                {
+                    Employees = EmployeesList;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return Employees;
+        }
+
+        public Employees GetEmployeeByEmail(string Email)
+        {
+            Employees Employee = new Employees();
+            try
+            {
+                var EmployeeInfo = _dbContext.Employees.FirstOrDefault(item => item.Email == Email);
                 if (EmployeeInfo != null && !string.IsNullOrEmpty(EmployeeInfo.Id))
                 {
                     Employee = EmployeeInfo;

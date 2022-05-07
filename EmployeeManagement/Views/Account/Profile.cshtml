@@ -6,69 +6,55 @@
 <section class="section">
     <div class="section-body">
         <div class="row mt-sm-4">
-            <div class="col-12 col-md-12 col-lg-5">
+            <div class="col-12 col-md-12 col-lg-12">
                 <div class="card profile-widget">
                     <div class="profile-widget-header">
-                        <img alt="image" src="../assets/img/avatar/avatar-1.png" class="rounded-circle profile-widget-picture">
+                        <img alt="image" src="@Session["ProfileImage"].ToString()" class="rounded-circle profile-widget-picture Profileimage">
+                        <div class="avatar-badge"><i class="fas fa-pencil-alt UpdateProfileImage" style="padding: 50px 0px 0px 0px;cursor:pointer;"></i></div>
+                        <input type="file" class="EmployeeProfileImage" style="display:none;" onchange="LoadImage(this);"/>
                     </div>
                     <div class="profile-widget-description">
-                        <div class="profile-widget-name">Ujang Maman <div class="text-muted d-inline font-weight-normal"><div class="slash"></div> Web Developer</div></div>
-                        Ujang maman is a superhero name in <b>Indonesia</b>, especially in my family. He is not a fictional character but an original hero in my family, a hero for his children and for his wife. So, I use the name as a user in this template. Not a tribute, I'm just bored with <b>'John Doe'</b>.
+                        <div class="profile-widget-name"><span class="EmployeeName">@ViewBag.EmployeeInfo.Name</span> <div class="text-muted d-inline font-weight-normal"><div class="slash"></div>@ViewBag.EmployeeInfo.Role</div></div>
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-12 col-lg-7">
+            <div class="col-12 col-md-12 col-lg-12">
                 <div class="card">
-                    <form method="post" class="needs-validation" novalidate="">
-                        <div class="card-header">
-                            <h4>Edit Profile</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="form-group col-md-6 col-12">
-                                    <label>First Name</label>
-                                    <input type="text" class="form-control" value="@Session["Name"].ToString()" required="">
-                                    <div class="invalid-feedback">
-                                        Please fill in the first name
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6 col-12">
-                                    <label>Last Name</label>
-                                    <input type="text" class="form-control" value="Maman" required="">
-                                    <div class="invalid-feedback">
-                                        Please fill in the last name
-                                    </div>
-                                </div>
+                    <div class="card-header">
+                        <h4>Edit Profile</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="form-group col-md-6 col-12">
+                                <label>Name</label>
+                                <input type="text" class="form-control Name" value="@ViewBag.EmployeeInfo.Name">
                             </div>
-                            <div class="row">
-                                <div class="form-group col-md-7 col-12">
-                                    <label>Email</label>
-                                    <input type="email" class="form-control" value="@Session["Email"].ToString()" required="">
-                                    <div class="invalid-feedback">
-                                        Please fill in the email
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-5 col-12">
-                                    <label>Phone</label>
-                                    <input type="tel" class="form-control" value="7418529630">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-12">
-                                    <label>Bio</label>
-                                    <textarea class="form-control summernote-simple" style="min-height:100px;">Ujang maman is a superhero name in <b>Indonesia</b>, especially in my family. He is not a fictional character but an original hero in my family, a hero for his children and for his wife. So, I use the name as a user in this template. Not a tribute, I'm just bored with <b>'John Doe'</b>.</textarea>
-                                </div>
+                            <div class="form-group col-md-6 col-12">
+                                <label>Mobile Number</label>
+                                <input type="email" class="form-control MobileNumber" value="@ViewBag.EmployeeInfo.MobileNumber">
                             </div>
                         </div>
-                        <div class="card-footer text-right">
-                            <button class="btn btn-primary">Save Changes</button>
+                        <div class="row">
+                            <div class="form-group col-md-12 col-12">
+                                <label>Email</label>
+                                <input type="email" class="form-control Email" value="@ViewBag.EmployeeInfo.Email" >
+                            </div>
                         </div>
-                    </form>
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label>address</label>
+                                <textarea class="form-control summernote-simple Address" style="min-height:100px;">@ViewBag.EmployeeInfo.Address</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-right">
+                        <button class="btn btn-primary UpdateEmployeeInfo">Save Changes</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 <script src="~/assets/js/jquery.min.js"></script>
-<script src="~/App_Assests/js/payslip.js"></script>
+<script src="~/App_Assests/js/account.js"></script>
 

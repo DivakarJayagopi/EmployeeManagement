@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Ecommerce Dashboard &mdash; Stisla</title>
+    <title>Kavitha Technologies</title>
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -29,8 +29,8 @@
                 <ul class="navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img alt="image" src="../assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
-                            <div class="d-sm-none d-lg-inline-block">@Session["Name"].ToString()</div>
+                            <img alt="image" src="@Session["ProfileImage"].ToString()" class="rounded-circle mr-1 Profileimage">
+                            <div class="d-sm-none d-lg-inline-block"><span class="EmployeeName">@Session["Name"].ToString()</span></div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a href="@Url.Action("Profile", "Account")" class="dropdown-item has-icon">
@@ -161,12 +161,18 @@
                     $("#viewPaySlip").addClass("active");
                     break;
                 case "/News/AddNews":
+                    var myDiv = $("div.main-sidebar")[0];
+                    myDiv.scrollTop = myDiv.scrollHeight;
                     $("#addNews").addClass("active");
                     break;
                 case "/News/ListNews":
+                    var myDiv = $("div.main-sidebar")[0];
+                    myDiv.scrollTop = myDiv.scrollHeight;
                     $("#viewNews").addClass("active");
                     break;
                 case "/Chat/Index":
+                    var myDiv = $("div.main-sidebar")[0];
+                    myDiv.scrollTop = myDiv.scrollHeight;
                     $("#chatting").addClass("active");
                     break;
             }

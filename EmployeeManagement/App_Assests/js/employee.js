@@ -1,4 +1,20 @@
 ﻿
+function LoadExistingEmplyeeInfo() {
+    handleAjaxRequest(null, true, "/Method/GetExistingEmployeeInfo", null, "CallBackGetExistingEmployeeInfo");
+}
+
+var ExistingEmailList = [];
+var ExistingMoblieNumberList = [];
+function CallBackGetExistingEmployeeInfo(responseData) {
+    if (responseData.message.status == "success") {
+        ExistingEmailList = responseData.message.EmailList;
+        ExistingMoblieNumberList = responseData.message.MoblieNumberList;
+    }
+    else {
+        $(".customErrorMessageAddEmployee").text("Error on Adding employee, Try agin in few min");
+    }
+}
+
 $(document).on('click', '.AddEmployeeFromSubmit', function () {
     var Name = $(".Name").val().trim();
     var Email = $(".Email").val().trim();
@@ -9,10 +25,6 @@ $(document).on('click', '.AddEmployeeFromSubmit', function () {
     var Team = $(".Team").val().trim();
     var Role = $(".Role").val().trim();
     var IsAdmin = $(".IsAdmin").val().trim();
-
-    $(".AddEmployeeFromSubmit").attr('disabled',"disabled");
-    $(".AddEmployeeFromSubmit").buttonLoader('start');
-
 
     if (Name == "" || Email == "" || Number == "" || dob == "" || doj == "" || Address == "" || Team == "" || Role == "") {
 
@@ -52,13 +64,24 @@ $(document).on('click', '.AddEmployeeFromSubmit', function () {
 
         var EmailValidation = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 
-        if (EmailValidation.test(Email)) {
+        if (!EmailValidation.test(Email)) {
+            $(".Email").addClass("form-error");
+            $(".customErrorMessageAddEmployee").text("please enter valid email");
+            return;
+        } else {
             IsEmailValid = true;
             $(".Email").removeClass("form-error");
             $(".customErrorMessageAddEmployee").text("");
-        } else {
-            $(".Email").addClass("form-error");
-            $(".customErrorMessageAddEmployee").text("please enter valid email");
+
+            if (ExistingEmailList.includes(Email)) {
+                $(".Email").addClass("form-error");
+                $(".customErrorMessageAddEmployee").text("Email Id already exist");
+                return;
+            } else if (ExistingMoblieNumberList.includes(Number)) {
+                $(".Number").addClass("form-error");
+                $(".customErrorMessageAddEmployee").text("Mobile Number already exist");
+                return;
+            }
         }
 
         if (IsEmailValid) {
@@ -76,15 +99,13 @@ function CallBackAddEmployee(responseData, Name) {
         $("input[type='number']").val("");
         swal({
             title: "Success",
-            text: "Employee" + Name + " Added SuccessFully",
+            text: "Employee " + Name + " Added SuccessFully",
             icon: "success",
         });
     }
     else {
         $(".customErrorMessageAddEmployee").text("Error on Adding employee, Try agin in few min");
     }
-    $(".AddEmployeeFromSubmit").buttonLoader('stop');
-    $(".AddEmployeeFromSubmit").removeAttr('disabled', "disabled");
 }
 
 
@@ -98,6 +119,8 @@ $(document).on('click', '#EditEmployeeInfo', function () {
     
 });
 
+var _tempExistingEmailList = [];
+var _tempExistingMoblieNumberList = [];
 function CallBackGetEmployeeById(responseData) {
     if (responseData.message.status == "success") {
         var EmployeeInfo = responseData.message.EmployeeInfo;
@@ -114,6 +137,20 @@ function CallBackGetEmployeeById(responseData) {
             $(".Role").val(EmployeeInfo.Role);
             $(".IsAdmin").val(EmployeeInfo.IsAdmin);
             $("#ViewEmployeeInfo").modal("show");
+
+            _tempExistingEmailList = ExistingEmailList;
+            _tempExistingMoblieNumberList = ExistingMoblieNumberList;
+
+            const EmailIndex = _tempExistingEmailList.indexOf(EmployeeInfo.Email);
+            if (EmailIndex > -1) {
+                _tempExistingEmailList.splice(EmailIndex, 1); // 2nd parameter means remove one item only
+            }
+
+            const MobileNumberIndex = _tempExistingMoblieNumberList.indexOf(EmployeeInfo.MobileNumber.toString());
+            if (MobileNumberIndex > -1) {
+                _tempExistingMoblieNumberList.splice(MobileNumberIndex, 1); // 2nd parameter means remove one item only
+            }
+
 
             $(".customErrorMessageUpdateEmployee").text("");
         }
@@ -180,6 +217,16 @@ $(document).on('click', '#UpdateEmployeeFromSubmit', function () {
         } else {
             $(".Email").addClass("form-error");
             $(".customErrorMessageUpdateEmployee").text("please enter valid email");
+        }
+
+        if (_tempExistingEmailList.includes(Email)) {
+            $(".Email").addClass("form-error");
+            $(".customErrorMessageAddEmployee").text("Email Id already exist");
+            return;
+        } else if (_tempExistingMoblieNumberList.includes(Number)) {
+            $(".Number").addClass("form-error");
+            $(".customErrorMessageAddEmployee").text("Mobile Number already exist");
+            return;
         }
 
         if (IsEmailValid) {

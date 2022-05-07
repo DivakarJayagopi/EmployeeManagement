@@ -21,7 +21,7 @@
                                         <select id="EmployeesList" class="form-control " data-placeholder=" Select a Employee" style="width: 100%;">
                                             @foreach (var Employee in ViewBag.EmployeesList)
                                             {
-                                                <option value="@Employee.Id">@Employee.Name</option>
+                                                <option value="@Employee.Id">@Employee.Name <small class="text-success">[ KT-@Employee.EmployeeCode ]</small> </option> 
                                             }
                                         </select>
                                     </div>

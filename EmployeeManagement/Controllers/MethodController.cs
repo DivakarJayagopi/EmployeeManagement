@@ -15,6 +15,7 @@ namespace EmployeeManagement.Controllers
         LeaveUtility leaveUtility = new LeaveUtility();
         PaySlipUtility paySlipUtility = new PaySlipUtility();
         NewsUtility newsUtility = new NewsUtility();
+        ChatUtility chatUtility = new ChatUtility();
         // GET: Method
         public ActionResult ValidateUserLogin(string Email, string Password)
         {
@@ -26,7 +27,7 @@ namespace EmployeeManagement.Controllers
                 {
                     Session["EmployeeId"] = EmployeeInfo.Id;
                     Session["Name"] = EmployeeInfo.Name;
-                    Session["Email"] = EmployeeInfo.Email;
+                    Session["ProfileImage"] = EmployeeInfo.ProfileImage;
                     Session["IsAdmin"] = EmployeeInfo.IsAdmin;
 
                     returnObject.Add("status", "success");
@@ -56,6 +57,7 @@ namespace EmployeeManagement.Controllers
                 {
                     Id = Guid.NewGuid().ToString(),
                     Name = Name,
+                    ProfileImage = "/assets/img/avatar/avatar-1.png",
                     Email = Email,
                     MobileNumber = Number,
                     Password = Password,
@@ -132,6 +134,59 @@ namespace EmployeeManagement.Controllers
             }
             return Json(new { message = returnObject }, JsonRequestBehavior.AllowGet);
         }
+        
+        public ActionResult UpdateEmployeeInfo(string Name, long Number, string Email, string Address,string ProfileImage)
+        {
+            Dictionary<string, object> returnObject = new Dictionary<string, object>();
+            try
+            {
+                string EmployeeId = Session["EmployeeId"].ToString();
+                if (string.IsNullOrEmpty(ProfileImage))
+                {
+                    var EmployeeInfo = employeeUtility.GetEmployeeById(EmployeeId);
+                    if (EmployeeInfo != null && !string.IsNullOrEmpty(EmployeeInfo.Id))
+                    {
+                        ProfileImage = EmployeeInfo.ProfileImage;
+                    }
+                }
+                else
+                {
+                    ProfileImage = SaveImage(ProfileImage);
+                }
+                Employees employee = new Employees
+                {
+                    Id = EmployeeId,
+                    Name = Name,
+                    ProfileImage = ProfileImage,
+                    Email = Email,
+                    MobileNumber = Number,
+                    Address = Address,
+                    ModifiedDate = DateTime.Now
+                };
+                bool status = employeeUtility.UpdateEmployeeInfo(employee);
+                if (status)
+                {
+                    var EmployeeInfo = employeeUtility.GetEmployeeById(EmployeeId);
+                    if(EmployeeInfo != null && !string.IsNullOrEmpty(EmployeeInfo.Id))
+                    {
+                        Session["Name"] = EmployeeInfo.Name;
+                        Session["ProfileImage"] = EmployeeInfo.ProfileImage;
+                        returnObject.Add("EmployeeInfo", EmployeeInfo);
+                    }
+                    returnObject.Add("status", "success");
+                }
+                else
+                {
+                    returnObject.Add("status", "fail");
+                }
+            }
+            catch (Exception exe)
+            {
+                returnObject.Add("status", "fail");
+                returnObject.Add("errorMessage", exe.Message);
+            }
+            return Json(new { message = returnObject }, JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult DeleteEmployee(string Id)
         {
@@ -151,6 +206,89 @@ namespace EmployeeManagement.Controllers
             catch (Exception exe)
             {
                 returnObject.Add("status", "fail");
+            }
+            return Json(new { message = returnObject }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetExistingEmployeeInfo()
+        {
+            Dictionary<string, object> returnObject = new Dictionary<string, object>();
+            try
+            {
+                var EmployeesList = employeeUtility.GetAllEmployees();
+                if (EmployeesList != null)
+                {
+                    var EmailList = EmployeesList.Select(x => x.Email).ToList();
+                    var MoblieNumberList = EmployeesList.Select(x => x.MobileNumber.ToString()).ToList();
+                    returnObject.Add("status", "success");
+                    returnObject.Add("EmailList", EmailList);
+                    returnObject.Add("MoblieNumberList", MoblieNumberList);
+                }
+                else
+                {
+                    returnObject.Add("status", "fail");
+                }
+            }
+            catch (Exception exe)
+            {
+                returnObject.Add("status", "fail");
+            }
+            return Json(new { message = returnObject }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult ForgotPassword(string Email)
+        {
+            Dictionary<string, object> returnObject = new Dictionary<string, object>();
+            try
+            {
+                var EmployeeInfo = employeeUtility.GetEmployeeByEmail(Email);
+                if (EmployeeInfo != null && !string.IsNullOrEmpty(EmployeeInfo.Id))
+                {
+                    Common commonClass = new Common();
+                    var status = commonClass.SendEmail(Email);
+                    if (status)
+                    {
+                        returnObject.Add("status", "success");
+                    }
+                    else
+                    {
+                        returnObject.Add("errorMessage", "Error on sending Email to " + Email);
+                        returnObject.Add("status", "fail");
+                    }
+                }
+                else
+                {
+                    returnObject.Add("errorMessage", "Email id Not found");
+                    returnObject.Add("status", "fail");
+                }
+            }
+            catch (Exception exe)
+            {
+                returnObject.Add("status", "fail");
+            }
+            return Json(new { message = returnObject }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult UpdatePassword(string Password)
+        {
+            Dictionary<string, object> returnObject = new Dictionary<string, object>();
+            try
+            {
+                string EmployeeId = Session["EmployeeId"].ToString();
+                bool status = employeeUtility.UpdatePassword(EmployeeId, Password);
+                if (status)
+                {
+                    returnObject.Add("status", "success");
+                }
+                else
+                {
+                    returnObject.Add("status", "fail");
+                }
+            }
+            catch (Exception exe)
+            {
+                returnObject.Add("status", "fail");
+                returnObject.Add("errorMessage", exe.Message);
             }
             return Json(new { message = returnObject }, JsonRequestBehavior.AllowGet);
         }
@@ -378,25 +516,6 @@ namespace EmployeeManagement.Controllers
             }
             return Json(new { message = returnObject }, JsonRequestBehavior.AllowGet);
         }
-
-        public string SaveImage(string Image)
-        {
-            string imagePath = "";
-            string folder = System.Web.HttpContext.Current.Server.MapPath("~/") + "App_Assests\\Images";
-            if (!Directory.Exists(folder))
-            {
-                Directory.CreateDirectory(folder);
-            }
-            var Base64Type = Image.Split(',')[0].Split('/')[1].Split(';')[0];
-            Image = Image.Split(',')[1];
-            string ImageGuid = Guid.NewGuid().ToString();
-            string filePath = folder + "\\" + ImageGuid + "." + Base64Type;
-            var imageBytes = Convert.FromBase64String(Image);
-            System.IO.File.WriteAllBytes(filePath, imageBytes);
-            imagePath = "/App_Assests/Images" + "/" + ImageGuid + "." + Base64Type;
-            return imagePath;
-        }
-
         public ActionResult DeleteNewsById(string Id)
         {
             Dictionary<string, object> returnObject = new Dictionary<string, object>();
@@ -417,6 +536,81 @@ namespace EmployeeManagement.Controllers
                 returnObject.Add("status", "fail");
             }
             return Json(new { message = returnObject }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult AddChat(string Message, string ToId)
+        {
+            Dictionary<string, object> returnObject = new Dictionary<string, object>();
+            try
+            {
+                string FromId = Session["EmployeeId"].ToString();
+                Chats chats = new Chats
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Message = Message,
+                    FromId = FromId,
+                    ToId = ToId,
+                    CreatedDate = DateTime.Now,
+                    ModifiedDate = DateTime.Now
+                };
+                bool status = chatUtility.AddChat(chats);
+                if (status)
+                {
+                    returnObject.Add("status", "success");
+                }
+                else
+                {
+                    returnObject.Add("status", "fail");
+                }
+            }
+            catch (Exception exe)
+            {
+                returnObject.Add("status", "fail");
+            }
+            return Json(new { message = returnObject }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetChatById(string ToId)
+        {
+            Dictionary<string, object> returnObject = new Dictionary<string, object>();
+            try
+            {
+                string FromId = Session["EmployeeId"].ToString();
+
+                var ChatsInfo = chatUtility.GetChatById(FromId, ToId);
+                if (ChatsInfo != null)
+                {
+                    returnObject.Add("ChatsInfo", ChatsInfo);
+                    returnObject.Add("status", "success");
+                }
+                else
+                {
+                    returnObject.Add("status", "fail");
+                }
+            }
+            catch (Exception exe)
+            {
+                returnObject.Add("status", "fail");
+            }
+            return Json(new { message = returnObject }, JsonRequestBehavior.AllowGet);
+        }
+
+        public string SaveImage(string Image)
+        {
+            string imagePath = "";
+            string folder = System.Web.HttpContext.Current.Server.MapPath("~/") + "App_Assests\\Images";
+            if (!Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);
+            }
+            var Base64Type = Image.Split(',')[0].Split('/')[1].Split(';')[0];
+            Image = Image.Split(',')[1];
+            string ImageGuid = Guid.NewGuid().ToString();
+            string filePath = folder + "\\" + ImageGuid + "." + Base64Type;
+            var imageBytes = Convert.FromBase64String(Image);
+            System.IO.File.WriteAllBytes(filePath, imageBytes);
+            imagePath = "/App_Assests/Images" + "/" + ImageGuid + "." + Base64Type;
+            return imagePath;
         }
     }
 }

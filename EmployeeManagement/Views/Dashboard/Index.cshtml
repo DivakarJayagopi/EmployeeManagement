@@ -83,7 +83,7 @@
                             <h4>Today Anniversary</h4>
                         </div>
                         <div class="card-body">
-                            <span class="TodayWorkAniversayCount">@ViewBag.TodayWorkAniversayCount</span>=
+                            <span class="TodayWorkAniversayCount">@ViewBag.TodayWorkAniversayCount</span>
                         </div>
                     </div>
                 </div>
@@ -204,6 +204,12 @@
                                             <td data-id="@Employee.Id" class="UpatedRole">@Employee.Role</td>
                                         </tr>
                                     }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="6" style="text-align:center"><b class="text-center text-warning">No Data Found</b></td>
+                                    </tr>
                                 }
                             </table>
                         </div>

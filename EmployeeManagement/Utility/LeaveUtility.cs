@@ -65,6 +65,7 @@ namespace EmployeeManagement.Utility
                                  {
                                      Id = lr.Id,
                                      EmployeeId = emp.Id,
+                                     EmployeeCode = emp.EmployeeCode,
                                      Name = emp.Name,
                                      Team = emp.Team,
                                      Title = lr.Title,

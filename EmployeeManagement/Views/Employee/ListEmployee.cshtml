@@ -17,6 +17,7 @@
                         <table id="employeeListTable" class="display" style="width:100%">
                             <thead>
                                 <tr>
+                                    <th>Employee Code</th>
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Mobile Number</th>
@@ -32,6 +33,7 @@
                             @foreach (var Employee in ViewBag.Employees)
                             {
                                 <tr>
+                                    <td data-id="@Employee.Id" class="UpatedName">ST-@Employee.EmployeeCode</td>
                                     <td data-id="@Employee.Id" class="UpatedName">@Employee.Name</td>
                                     <td data-id="@Employee.Id" class="UpatedEmail">@Employee.Email</td>
                                     <td data-id="@Employee.Id" class="UpatedMobileNumber">@Employee.MobileNumber</td>
@@ -138,5 +140,6 @@
 <script>
     $(document).ready(function () {
         $('#employeeListTable').DataTable();
+        LoadExistingEmplyeeInfo();
     });
 </script>

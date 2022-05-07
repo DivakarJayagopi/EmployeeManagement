@@ -1,4 +1,5 @@
 ﻿using EmployeeManagement.Entities;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,6 @@ namespace EmployeeManagement.Controllers
         {
             if (Session["IsAdmin"] == null)
                 return RedirectToAction("Login", "Account");
-
             return View();
         }
 

@@ -28,12 +28,16 @@
                                 </div>
                             </div>
                         </div>
-                       
+
                         <div id="leaveRequestList" style="display:none">
-                            <table id="leaveRequestListTable" class="display" style="width:100%;">
+                            <table class="table table-bordered table-md" id="leaveRequestListTable" style="width:100%;">
                                 <thead>
                                     <tr>
                                         <th>Name</th>
+                                        @if (Session["IsAdmin"].ToString() == "1")
+                                        {
+                                            <th>Employee Code</th>
+                                        }
                                         <th>Team</th>
                                         <th>Title</th>
                                         <th>From Date</th>
@@ -47,7 +51,6 @@
                                 </tbody>
                             </table>
                         </div>
-                        
                     </div>
                 </div>
             </div>
@@ -57,9 +60,10 @@
 
 <script src="~/assets/js/jquery.min.js"></script>
 <script type="text/javascript" charset="utf8" src="~/assets/js/jquery.dataTables.js"></script>
-<script src="~/App_Assests/js/leave.js"></script>
 <script>
     $(document).ready(function () {
-        $('#leaveRequestListTable').DataTable();
+        //$('#leaveRequestListTable').DataTable();
     });
+    var IsAdmin = '@Session["IsAdmin"].ToString()';
 </script>
+<script src="~/App_Assests/js/leave.js"></script>

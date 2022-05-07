@@ -56,12 +56,16 @@ function CallBackGetLeaveRquestByDate(responseData) {
                 }
                 RequestListHTML += "<tr>";
                 RequestListHTML += "<td>" + value.Name + "</td>";
+                if (IsAdmin == "1") {
+                    RequestListHTML += "<td> KT-" + value.EmployeeCode + "</td>";
+                }
                 RequestListHTML += "<td>" + value.Team + "</td>";
                 RequestListHTML += "<td>" + value.Title + "</td>";
                 RequestListHTML += "<td>" + value.FromDateString + "</td>";
                 RequestListHTML += "<td>" + value.ToDateString + "</td>";
                 RequestListHTML += "<td>" + value.Description + "</td>";
                 RequestListHTML += "<td>" + value.Status + "</td>";
+                value.Comments = (typeof (value.Comments) == "undefined" || value.Comments == null || value.Comments == "") ? "" : value.Comments;
                 RequestListHTML += "<td>" + value.Comments + "</td>";
                 RequestListHTML += "/<tr>";
             });
@@ -72,7 +76,7 @@ function CallBackGetLeaveRquestByDate(responseData) {
             RequestListHTML += "/<tr>";
         }
         $(".LeaveRequestListBody").html(RequestListHTML);
-        $('#leaveRequestListTable').DataTable();
+        //$('#leaveRequestListTable').DataTable();
     }
     else {
 

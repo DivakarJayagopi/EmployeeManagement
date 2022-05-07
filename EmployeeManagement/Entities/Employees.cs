@@ -8,7 +8,9 @@ namespace EmployeeManagement.Entities
     public class Employees : DateProperty
     {
         public string Id { get; set; }
+        public int EmployeeCode { get; set; }
         public string Name { get; set; }
+        public string ProfileImage { get; set; }
         public string Email { get; set; }
         public long MobileNumber { get; set; }
         public string Password { get; set; }

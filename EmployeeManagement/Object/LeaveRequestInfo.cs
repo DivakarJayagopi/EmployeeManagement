@@ -9,6 +9,7 @@ namespace EmployeeManagement.Object
     {
         public string Id { get; set; }
         public string EmployeeId { get; set; }
+        public int EmployeeCode { get; set; }
         public string Name { get; set; }
         public string Team { get; set; }
         public string Title { get; set; }

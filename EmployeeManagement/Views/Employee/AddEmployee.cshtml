@@ -54,6 +54,7 @@
                                 <option value="1">Admin</option>
                             </select>
                         </div>
+                        <p><button class="btn btn-danger" id="AddSalaryBtn" data-toggle="modal" data-target="#AddEmployeeSalaryInfo">Add Salary Details</button></p>
                         <span class="text-danger customErrorMessageAddEmployee"></span>
                         <button class="btn btn-block btn-info AddEmployeeFromSubmit" type="button">Submit</button>
                     </div>
@@ -62,6 +63,36 @@
         </div>
     </div>
 </section>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="AddEmployeeSalaryInfo">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Salary Info</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" class="EmployeeId" />
+                <div class="row">
+                    <div class="col-md-12">
+                        <span>Basic : </span> <input type="number" class="form-control Basic"  />
+                        <span>DA : </span> <input type="number" class="form-control DA"  />
+                        <span>HRA : </span> <input type="number" class="form-control HRA"  />
+                        <span>Medical Allowances  : </span> <input type="number" class="form-control MedicalAllowances"  />
+                        <span>Conveyance Charges : </span> <input type="number" class="form-control ConveyanceCharges"  />
+                        <span>Special Allowances  : </span> <input type="number" class="form-control SpecialAllowances"  />
+                    </div>
+                </div>
+                <p></p>
+                <span class="text-danger customErrorMessageAddSalaryInfo"></span>
+                <button class="btn btn-block btn-info AddEmployeeSalaryInfoBtn" id="AddEmployeeSalaryInfoBtn" type="button">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="~/assets/js/jquery.min.js"></script>
 <script src="~/App_Assests/js/employee.js"></script>
 <script>

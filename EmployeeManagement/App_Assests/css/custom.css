@@ -15,3 +15,13 @@
 .EmployeeList li.EmployeeChatInfo {
     padding: 5px;
 }
+
+button.btn.btn-block[disabled]:hover {
+    background-color: gray !important;
+    border: gray;
+}
+
+button.btn.btn-block.btn-info[disabled] {
+    background-color: gray !important;
+    border: gray;
+}

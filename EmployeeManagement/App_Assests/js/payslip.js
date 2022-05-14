@@ -49,6 +49,9 @@ $(document).on('click', '.AddEmployeePaySlip', function () {
         $("input[type='number']").removeClass("form-error");
 
         $(".customErrorMessageAddLeaveRequest").text("");
+
+        $(".AddEmployeePaySlip").attr("disabled", "disabed");
+        $(".AddEmployeePaySlip").text("loading...");
         var data = '{EmployeeId:"' + EmployeeId + '", Basic:' + Basic + ', DA:' + DA + ', HRA:' + HRA + ', MedicalAllowances:' + MedicalAllowances + ', ConveyanceCharges:' + ConveyanceCharges + ', SpecialAllowances:' + SpecialAllowances + ', IncomeTax:' + IncomeTax + ', EducationalCess:' + EducationalCess + ', LOP:' + LOP + ', PaidMonth : "' + PaidMonth + '"}';
         handleAjaxRequest(null, true, "/Method/AddPaySlip", data, "CallBackAddPaySlip");
     }
@@ -57,6 +60,9 @@ $(document).on('click', '.AddEmployeePaySlip', function () {
 function CallBackAddPaySlip(responseData) {
     if (responseData.message.status == "success") {
         $("input[type='number']").val("");
+        $(".TotalEarnings").text("0");
+        $(".TotalDeduction").text("0");
+        $(".NetPay").text("0");
         swal({
             title: "Success",
             text: "PaySlip Added Successfully",
@@ -66,6 +72,8 @@ function CallBackAddPaySlip(responseData) {
     else {
         $(".customErrorMessageAddLeaveRequest").text("Error on Adding leave request, Try agin in few min");
     }
+    $(".AddEmployeePaySlip").removeAttr("disabled", "disabed");
+    $(".AddEmployeePaySlip").text("Add Salary");
 }
 
 function SalaryCalculation() {
@@ -110,6 +118,9 @@ $(document).on('click', '.SelectPaySlipMonth', function () {
     }
     $(".noDataFound").hide();
     $(".SalaryInfo").hide();
+
+    $(".SelectPaySlipMonth").attr("disabled", "disabed");
+    $(".SelectPaySlipMonth").text("loading...");
     var data = '{EmployeeId:"' + EmployeeId + '", SelectedMonth:"' + SelectedMonth + '"}';
     handleAjaxRequest(null, true, "/Method/GetpaySlipByEmployeeId", data, "CallBackGetpaySlipByEmployeeId");
 });
@@ -169,5 +180,39 @@ function CallBackGetpaySlipByEmployeeId(responseData) {
     }
     else {
         $(".customErrorMessageAddLeaveRequest").text("Error on Adding leave request, Try agin in few min");
+    }
+
+    $(".SelectPaySlipMonth").removeAttr("disabled", "disabed");
+    $(".SelectPaySlipMonth").text("Submit");
+}
+
+$(document).on('change', '#EmployeesList', function () {
+    var EmployeeId = $("#EmployeesList").val();
+
+    if (typeof (EmployeeId) != "undefined" && EmployeeId != null && EmployeeId != "") {
+        var data = '{EmployeeId:"' + EmployeeId + '"}';
+        handleAjaxRequest(null, true, "/Method/GetEmployeeSalaryInfoByEmployeeId", data, "CallBackGetEmployeeSalaryInfoByEmployeeId");
+    }
+    $(".AddPaySlipForm").hide();
+});
+
+function CallBackGetEmployeeSalaryInfoByEmployeeId(responseData) {
+    if (responseData.message.status == "success") {
+
+        var SalaryInfo = responseData.message.SalaryInfo;
+
+        if (SalaryInfo != "undefined" && SalaryInfo != null) {
+            $(".EmployeeId").val(SalaryInfo.EmployeeId);
+            $(".Basic").val(SalaryInfo.Basic);
+            $(".DA").val(SalaryInfo.DA);
+            $(".HRA").val(SalaryInfo.HRA);
+            $(".MedicalAllowances").val(SalaryInfo.MedicalAllowances);
+            $(".ConveyanceCharges").val(SalaryInfo.ConveyanceCharges);
+            $(".SpecialAllowances").val(SalaryInfo.SpecialAllowances);
+        }
+        $(".AddPaySlipForm").show();
+    }
+    else {
+
     }
 }

@@ -32,7 +32,7 @@ namespace EmployeeManagement.Utility
             try
             {
                 DateTime _selectedMonth = DateTime.Parse(SelectedMonth);
-                var PaySlipInfo = _dbContext.PaySlip.Where(x => x.PaidMonth.Month == _selectedMonth.Month && x.EmployeeId == EmployeeId).FirstOrDefault();
+                var PaySlipInfo = _dbContext.PaySlip.Where(x => x.PaidMonth.Month == _selectedMonth.Month && x.EmployeeId == EmployeeId).OrderByDescending(x=>x.CreatedDate).FirstOrDefault();
                 if (PaySlipInfo != null && !string.IsNullOrEmpty(PaySlipInfo.Id))
                 {
                     paySlip = PaySlipInfo;

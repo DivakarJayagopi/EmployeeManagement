@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 
@@ -16,6 +17,7 @@ namespace EmployeeManagement.Controllers
         PaySlipUtility paySlipUtility = new PaySlipUtility();
         NewsUtility newsUtility = new NewsUtility();
         ChatUtility chatUtility = new ChatUtility();
+        EmployeeSalaryInfoUtility employeeSalaryInfoUtility = new EmployeeSalaryInfoUtility();
         // GET: Method
         public ActionResult ValidateUserLogin(string Email, string Password)
         {
@@ -25,6 +27,7 @@ namespace EmployeeManagement.Controllers
                 var EmployeeInfo = employeeUtility.ValidateLogin(Email, Password);
                 if(EmployeeInfo != null && !string.IsNullOrEmpty(EmployeeInfo.Id))
                 {
+                    Thread.Sleep(2000);
                     Session["EmployeeId"] = EmployeeInfo.Id;
                     Session["Name"] = EmployeeInfo.Name;
                     Session["ProfileImage"] = EmployeeInfo.ProfileImage;
@@ -45,17 +48,18 @@ namespace EmployeeManagement.Controllers
             return Json(new { message = returnObject }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult AddEmployee(string Name,string Email, long Number,string Password, string dob,string doj, string Address, string Team, string Role, int IsAdmin)
+        public ActionResult AddEmployee(string Name,string Email, long Number,string Password, string dob,string doj, string Address, string Team, string Role, int IsAdmin, EmployeeSalaryInfo employeeSalaryInfo)
         {
             Dictionary<string, object> returnObject = new Dictionary<string, object>();
             
             try
             {
+                string EmployeeId = Guid.NewGuid().ToString();
                 DateTime DOB = DateTime.Parse(dob);
                 DateTime DOJ = DateTime.Parse(doj);
                 Employees employee = new Employees
                 {
-                    Id = Guid.NewGuid().ToString(),
+                    Id = EmployeeId,
                     Name = Name,
                     ProfileImage = "/assets/img/avatar/avatar-1.png",
                     Email = Email,
@@ -73,7 +77,16 @@ namespace EmployeeManagement.Controllers
                 bool status = employeeUtility.AddEmployee(employee);
                 if (status)
                 {
-                    returnObject.Add("status", "success");
+                    employeeSalaryInfo.Id = Guid.NewGuid().ToString();
+                    employeeSalaryInfo.EmployeeId = EmployeeId;
+                    employeeSalaryInfo.CreatedDate = DateTime.Now;
+                    employeeSalaryInfo.ModifiedDate = DateTime.Now;
+
+                    status = employeeSalaryInfoUtility.AddEmployeeSalaryInfo(employeeSalaryInfo);
+                    if (status)
+                    {
+                        returnObject.Add("status", "success");
+                    }
                 }
                 else
                 {
@@ -134,7 +147,54 @@ namespace EmployeeManagement.Controllers
             }
             return Json(new { message = returnObject }, JsonRequestBehavior.AllowGet);
         }
-        
+
+        public ActionResult UpdateEmployeeSalaryInfo(EmployeeSalaryInfo employeeSalaryInfo)
+        {
+            Dictionary<string, object> returnObject = new Dictionary<string, object>();
+            try
+            {
+                bool status = employeeSalaryInfoUtility.UpdateEmployeeSalaryInfo(employeeSalaryInfo);
+                if (status)
+                {
+                    returnObject.Add("status", "success");
+                }
+                else
+                {
+                    returnObject.Add("status", "fail");
+                }
+            }
+            catch (Exception exe)
+            {
+                returnObject.Add("status", "fail");
+                returnObject.Add("errorMessage", exe.Message);
+            }
+            return Json(new { message = returnObject }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetEmployeeSalaryInfoByEmployeeId(string EmployeeId)
+        {
+            Dictionary<string, object> returnObject = new Dictionary<string, object>();
+            try
+            {
+                var SalaryInfo = employeeSalaryInfoUtility.GetEmployeeSalaryInfoByEmployeeId(EmployeeId);
+                if (SalaryInfo != null && !string.IsNullOrEmpty(SalaryInfo.EmployeeId))
+                {
+                    returnObject.Add("SalaryInfo", SalaryInfo);
+                    returnObject.Add("status", "success");
+                }
+                else
+                {
+                    returnObject.Add("status", "fail");
+                }
+            }
+            catch (Exception exe)
+            {
+                returnObject.Add("status", "fail");
+                returnObject.Add("errorMessage", exe.Message);
+            }
+            return Json(new { message = returnObject }, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult UpdateEmployeeInfo(string Name, long Number, string Email, string Address,string ProfileImage)
         {
             Dictionary<string, object> returnObject = new Dictionary<string, object>();

@@ -19,6 +19,7 @@
                                     <label>Select Employee</label>
                                     <div class="form-group">
                                         <select id="EmployeesList" class="form-control " data-placeholder=" Select a Employee" style="width: 100%;">
+                                            <option value="">Select Employee</option>
                                             @foreach (var Employee in ViewBag.EmployeesList)
                                             {
                                                 <option value="@Employee.Id">@Employee.Name <small class="text-success">[ KT-@Employee.EmployeeCode ]</small> </option> 
@@ -36,34 +37,38 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p>Earnings</p>
-                                <span>Basic : </span> <input type="number" class="form-control Basic" onkeyup="SalaryCalculation()" />
-                                <span>DA : </span> <input type="number" class="form-control DA" onkeyup="SalaryCalculation()"/>
-                                <span>HRA : </span> <input type="number" class="form-control HRA" onkeyup="SalaryCalculation()"/>
-                                <span>Medical Allowances  : </span> <input type="number" class="form-control MedicalAllowances" onkeyup="SalaryCalculation()"/>
-                                <span>Conveyance Charges : </span> <input type="number" class="form-control ConveyanceCharges" onkeyup="SalaryCalculation()"/>
-                                <span>Special Allowances  : </span> <input type="number" class="form-control SpecialAllowances" onkeyup="SalaryCalculation()"/>
-                                <br />
-                                <p><b>Total Earnings : &nbsp;&nbsp;&nbsp;&nbsp; <span class="TotalEarnings">0</span></b></p>
+                        <div class="AddPaySlipForm" style="display:none;">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>Earnings</p>
+                                    <span>Basic : </span> <input type="number" class="form-control Basic" onkeyup="SalaryCalculation()" />
+                                    <span>DA : </span> <input type="number" class="form-control DA" onkeyup="SalaryCalculation()" />
+                                    <span>HRA : </span> <input type="number" class="form-control HRA" onkeyup="SalaryCalculation()" />
+                                    <span>Medical Allowances  : </span> <input type="number" class="form-control MedicalAllowances" onkeyup="SalaryCalculation()" />
+                                    <span>Conveyance Charges : </span> <input type="number" class="form-control ConveyanceCharges" onkeyup="SalaryCalculation()" />
+                                    <span>Special Allowances  : </span> <input type="number" class="form-control SpecialAllowances" onkeyup="SalaryCalculation()" />
+                                    <br />
+                                    <p><b>Total Earnings : &nbsp;&nbsp;&nbsp;&nbsp; <span class="TotalEarnings">0</span></b></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>Deduction</p>
+                                    <span>Income Tax : </span> <input type="number" class="form-control IncomeTax" onkeyup="SalaryCalculation()" />
+                                    <span>Educational Cess : </span> <input type="number" class="form-control EducationalCess" onkeyup="SalaryCalculation()" />
+                                    <span>LOP : </span> <input type="number" class="form-control LOP" onkeyup="SalaryCalculation()" />
+                                    <br />
+                                    <p><b>Total Deduction : &nbsp;&nbsp;&nbsp;&nbsp; <span class="TotalDeduction">0</span></b></p>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <p>Deduction</p>
-                                <span>Income Tax : </span> <input type="number" class="form-control IncomeTax" onkeyup="SalaryCalculation()"/>
-                                <span>Educational Cess : </span> <input type="number" class="form-control EducationalCess" onkeyup="SalaryCalculation()"/>
-                                <span>LOP : </span> <input type="number" class="form-control LOP" onkeyup="SalaryCalculation()"/>
-                                <br />
-                                <p><b>Total Deduction : &nbsp;&nbsp;&nbsp;&nbsp; <span class="TotalDeduction">0</span></b></p>
+                            <hr />
+                            <div class="col-md-12 row">
+                                <div class="col-md-6">
+                                    <p><b>Net Pay : <b class="NetPay">0</b></b></p>
+                                </div>
                             </div>
+                            <button class="btn btn-block btn-info AddEmployeePaySlip" type="button">Add Salary</button>
                         </div>
-                        <hr />
-                        <div class="col-md-12 row">
-                            <div class="col-md-6">
-                                <p><b>Net Pay : <b class="NetPay">0</b></b></p>
-                            </div>
-                        </div>
-                        <button class="btn btn-block btn-info AddEmployeePaySlip" type="button">Submit</button>
+                        
+                       
                     </div>
                 </div>
             </div>

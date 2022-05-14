@@ -15,7 +15,7 @@ function CallBackGetExistingEmployeeInfo(responseData) {
     }
 }
 
-$(document).on('click', '.AddEmployeeFromSubmit', function () {
+$(document).on('click', '.AddEmployeeFromSubmit', function () {   
     var Name = $(".Name").val().trim();
     var Email = $(".Email").val().trim();
     var Number = $(".Number").val().trim();
@@ -82,21 +82,35 @@ $(document).on('click', '.AddEmployeeFromSubmit', function () {
                 $(".customErrorMessageAddEmployee").text("Mobile Number already exist");
                 return;
             }
+
+            if (!IsEmployeeSalaryAdded) {
+                $(".customErrorMessageAddEmployee").text("Add employee Salary Details");
+                return;
+            }
         }
 
         if (IsEmailValid) {
-            var data = '{Name:"' + Name + '", Email:"' + Email + '", Number:' + Number + ',Password :"Welcome@123", dob:"' + dob + '", doj:"' + doj + '", Address:"' + Address + '", Team:"' + Team + '", Role:"' + Role + '", IsAdmin:' + IsAdmin + '}';
+            $(".AddEmployeeFromSubmit").attr("disabled", "disabed");
+            $(".AddEmployeeFromSubmit").text("loading...");
+            var data = '{Name:"' + Name + '", Email:"' + Email + '", Number:' + Number + ',Password :"Welcome@123", dob:"' + dob + '", doj:"' + doj + '", Address:"' + Address + '", Team:"' + Team + '", Role:"' + Role + '", IsAdmin:' + IsAdmin + ', employeeSalaryInfo:' + JSON.stringify(employeeSalaryInfo) + '}';
             handleAjaxRequest(null, true, "/Method/AddEmployee", data, "CallBackAddEmployee", Name);
         }
     }
 
 });
 
+var employeeSalaryInfo;
+var IsEmployeeSalaryAdded = false;
+
 function CallBackAddEmployee(responseData, Name) {
     if (responseData.message.status == "success") {
         $("input[type='text']").val("");
         $("input[type='date']").val("");
         $("input[type='number']").val("");
+        IsEmployeeSalaryAdded = false;
+        $("#AddSalaryBtn").removeClass("btn-success");
+        $("#AddSalaryBtn").addClass("btn-danger");
+        employeeSalaryInfo = {};
         swal({
             title: "Success",
             text: "Employee " + Name + " Added SuccessFully",
@@ -106,12 +120,59 @@ function CallBackAddEmployee(responseData, Name) {
     else {
         $(".customErrorMessageAddEmployee").text("Error on Adding employee, Try agin in few min");
     }
+    $(".AddEmployeeFromSubmit").removeAttr("disabled");
+    $(".AddEmployeeFromSubmit").text("Submit");
 }
 
+$(document).on('click', '#AddEmployeeSalaryInfoBtn', function () {
+    var Basic = $(".Basic").val().trim();
+    var DA = $(".DA").val().trim();
+    var HRA = $(".HRA").val().trim();
+    var MedicalAllowances = $(".MedicalAllowances").val().trim();
+    var ConveyanceCharges = $(".ConveyanceCharges").val().trim();
+    var SpecialAllowances = $(".SpecialAllowances").val().trim();
+
+    if (Basic == "" || DA == "" || HRA == "" || MedicalAllowances == "" || ConveyanceCharges == "" || SpecialAllowances == "") {
+
+        $(".customErrorMessageAddSalaryInfo").text("All fields are Mandatory");
+
+        if (Basic == "") $(".Basic").addClass("form-error");
+        else $(".Basic").removeClass("form-error");
+
+        if (DA == "") $(".DA").addClass("form-error");
+        else $(".DA").removeClass("form-error");
+
+        if (HRA == "") $(".HRA").addClass("form-error");
+        else $(".HRA").removeClass("form-error");
+
+        if (MedicalAllowances == "") $(".MedicalAllowances").addClass("form-error");
+        else $(".MedicalAllowances").removeClass("form-error");
+
+        if (ConveyanceCharges == "") $(".ConveyanceCharges").addClass("form-error");
+        else $(".ConveyanceCharges").removeClass("form-error");
+
+        if (SpecialAllowances == "") $(".SpecialAllowances").addClass("form-error");
+        else $(".SpecialAllowances").removeClass("form-error");
+    } else {
+        $("input[type='number']").removeClass("form-error");
+
+        employeeSalaryInfo = {
+            "Basic": Basic,
+            "DA": DA,
+            "HRA": HRA,
+            "MedicalAllowances": MedicalAllowances,
+            "ConveyanceCharges": ConveyanceCharges,
+            "SpecialAllowances": SpecialAllowances
+        }
+        IsEmployeeSalaryAdded = true;
+        $("#AddSalaryBtn").removeClass("btn-danger");
+        $("#AddSalaryBtn").addClass("btn-success");
+        $("#AddEmployeeSalaryInfo").modal("hide");
+    }
+
+});
 
 
-
-    
 $(document).on('click', '#EditEmployeeInfo', function () {
     var Id = $(this).attr("data-id");
     var data = '{Id:"' + Id + '"}';
@@ -230,6 +291,8 @@ $(document).on('click', '#UpdateEmployeeFromSubmit', function () {
         }
 
         if (IsEmailValid) {
+            $("#UpdateEmployeeFromSubmit").attr("disabled", "disabed");
+            $("#UpdateEmployeeFromSubmit").text("loading...");
             var data = '{Id:"' + Id + '",Name:"' + Name + '", Email:"' + Email + '", Number:' + Number + ', dob:"' + dob + '", doj:"' + doj + '", Address:"' + Address + '", Team:"' + Team + '", Role:"' + Role + '", IsAdmin:' + IsAdmin + '}';
             handleAjaxRequest(null, true, "/Method/UpdateEmployee", data, "CallBackUpdateEmployee", Name);
         }
@@ -250,12 +313,110 @@ function CallBackUpdateEmployee(responseData, Name) {
             $("td[data-id='" + EmployeeInfo.Id + "'].UpatedAddress").text(EmployeeInfo.Address);
             $("td[data-id='" + EmployeeInfo.Id + "'].UpatedTeam").text(EmployeeInfo.Team);
             $("td[data-id='" + EmployeeInfo.Id + "'].UpatedRole").text(EmployeeInfo.Role);
+
+            if (EmployeeInfo.IsAdmin == 1) {
+                $("td[data-id='" + EmployeeInfo.Id + "'].PermissionType").text("Admin");
+            }
+            else {
+                $("td[data-id='" + EmployeeInfo.Id + "'].PermissionType").text("Normal");
+            }
         }
         $("#ViewEmployeeInfo").modal("hide");
     }
     else {
         $(".customErrorMessageUpdateEmployee").text("Error on Adding employee, Try agin in few min");
     }
+    $("#UpdateEmployeeFromSubmit").removeAttr("disabled");
+    $("#UpdateEmployeeFromSubmit").text("Update");
+}
+
+$(document).on('click', '.ViewEmployeeSalaryInfo', function () {
+    var EmployeeId = $(this).attr("data-id");
+    var data = '{EmployeeId:"' + EmployeeId + '"}';
+    handleAjaxRequest(null, true, "/Method/GetEmployeeSalaryInfoByEmployeeId", data, "CallBackGetEmployeeSalaryInfoByEmployeeId");
+});
+
+function CallBackGetEmployeeSalaryInfoByEmployeeId(responseData) {
+    if (responseData.message.status == "success") {
+
+        var SalaryInfo = responseData.message.SalaryInfo;
+
+        if (SalaryInfo != "undefined" && SalaryInfo != null) {
+            $(".EmployeeId").val(SalaryInfo.EmployeeId);
+            $(".Basic").val(SalaryInfo.Basic);
+            $(".DA").val(SalaryInfo.DA);
+            $(".HRA").val(SalaryInfo.HRA);
+            $(".MedicalAllowances").val(SalaryInfo.MedicalAllowances);
+            $(".ConveyanceCharges").val(SalaryInfo.ConveyanceCharges);
+            $(".SpecialAllowances").val(SalaryInfo.SpecialAllowances);
+        }
+        $("#ViewEmployeeSalaryInfo").modal("show");
+    }
+    else {
+        $(".customErrorMessageUpdateEmployee").text("Error on Adding employee, Try agin in few min");
+    }
+}
+
+$(document).on('click', '#UpdateEmployeeSalaryInfoBtn', function () {
+    var Basic = $(".Basic").val().trim();
+    var DA = $(".DA").val().trim();
+    var HRA = $(".HRA").val().trim();
+    var MedicalAllowances = $(".MedicalAllowances").val().trim();
+    var ConveyanceCharges = $(".ConveyanceCharges").val().trim();
+    var SpecialAllowances = $(".SpecialAllowances").val().trim();
+    var EmployeeId = $(".EmployeeId").val();
+
+    if (Basic == "" || DA == "" || HRA == "" || MedicalAllowances == "" || ConveyanceCharges == "" || SpecialAllowances == "") {
+
+        $(".customErrorMessageAddSalaryInfo").text("All fields are Mandatory");
+
+        if (Basic == "") $(".Basic").addClass("form-error");
+        else $(".Basic").removeClass("form-error");
+
+        if (DA == "") $(".DA").addClass("form-error");
+        else $(".DA").removeClass("form-error");
+
+        if (HRA == "") $(".HRA").addClass("form-error");
+        else $(".HRA").removeClass("form-error");
+
+        if (MedicalAllowances == "") $(".MedicalAllowances").addClass("form-error");
+        else $(".MedicalAllowances").removeClass("form-error");
+
+        if (ConveyanceCharges == "") $(".ConveyanceCharges").addClass("form-error");
+        else $(".ConveyanceCharges").removeClass("form-error");
+
+        if (SpecialAllowances == "") $(".SpecialAllowances").addClass("form-error");
+        else $(".SpecialAllowances").removeClass("form-error");
+    } else {
+        $("input[type='number']").removeClass("form-error");
+
+        employeeSalaryInfo = {
+            "EmployeeId": EmployeeId,
+            "Basic": Basic,
+            "DA": DA,
+            "HRA": HRA,
+            "MedicalAllowances": MedicalAllowances,
+            "ConveyanceCharges": ConveyanceCharges,
+            "SpecialAllowances": SpecialAllowances
+        }
+        $("#UpdateEmployeeSalaryInfoBtn").attr("disabled", "disabed");
+        $("#UpdateEmployeeSalaryInfoBtn").text("loading...");
+        var data = '{employeeSalaryInfo:' + JSON.stringify(employeeSalaryInfo) + '}';
+        handleAjaxRequest(null, true, "/Method/UpdateEmployeeSalaryInfo", data, "CallBackUpdateEmployeeSalaryInfo");
+    }
+});
+
+function CallBackUpdateEmployeeSalaryInfo(responseData) {
+    if (responseData.message.status == "success") {
+        $("#ViewEmployeeSalaryInfo").modal("hide");
+    }
+    else {
+        swal("Error on Deleting Employee !", {
+            icon: "danger",
+        });
+    }
+    $("#UpdateEmployeeSalaryInfoBtn").removeAttr("disabled");
+    $("#UpdateEmployeeSalaryInfoBtn").text("Update");
 }
 
 $(document).on('click', '#DeleteEmployeeInfo', function () {
@@ -279,9 +440,6 @@ $(document).on('click', '#DeleteEmployeeInfo', function () {
 function CallBackDeleteEmployee(responseData, $target) {
     if (responseData.message.status == "success") {
         $target.parent().parent().remove();
-        //swal("Poof! Employee has been deleted!", {
-        //    icon: "success",
-        //});
     }
     else {
         swal("Error on Deleting Employee !", {

@@ -17,18 +17,12 @@
         $(".Description").removeClass("form-error");
         $("textarea").removeClass("form-error");
 
+        $(".AddNewsFromSubmit").attr("disabled", "disabed");
+        $(".AddNewsFromSubmit").text("loading.....");
+
         var data = "{Title:'" + Title + "', Description:'" + Description + "', image:'" + img + "', EmployeeIds:" + JSON.stringify(EmployeeIds) + "}";
         handleAjaxRequest(null, true, "/Method/AddNews", data, "CallBackAddNews");
     }
-});
-
-$("#EmployeesList").on("change", function (e) {
-    //var selected = $(e.target).val();
-    //$("#EmployeesList option:selected").removeAttr("selected");
-    //if (selected == 'all') {
-    //    $('#fruits > option').prop("selected", false);
-    //    $(e.target).prop("selected", true);
-    //};
 });
 
 function CallBackAddNews(responseData) {
@@ -46,6 +40,8 @@ function CallBackAddNews(responseData) {
     else {
         $(".AddNewsCustomErrorMessage").text("Error on Adding News, Try agin in few min");
     }
+    $(".AddNewsFromSubmit").removeAttr("disabled", "disabed");
+    $(".AddNewsFromSubmit").text("Submit");
 }
 
 var images = "";

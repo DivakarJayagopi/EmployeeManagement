@@ -139,6 +139,7 @@
     <Compile Include="Entities\DateProperty.cs" />
     <Compile Include="Entities\Employees.cs" />
     <Compile Include="Entities\EmployeeDbContext.cs" />
+    <Compile Include="Entities\EmployeeSalaryInfo.cs" />
     <Compile Include="Entities\LeaveRequest.cs" />
     <Compile Include="Entities\News.cs" />
     <Compile Include="Entities\NewsConnector.cs" />
@@ -153,6 +154,7 @@
     <Compile Include="Utility\ChatUtility.cs" />
     <Compile Include="Utility\Common.cs" />
     <Compile Include="Utility\DashboardUtility.cs" />
+    <Compile Include="Utility\EmployeeSalaryInfoUtility.cs" />
     <Compile Include="Utility\EmployeeUtility.cs" />
     <Compile Include="Utility\LeaveUtility.cs" />
     <Compile Include="Utility\NewsUtility.cs" />

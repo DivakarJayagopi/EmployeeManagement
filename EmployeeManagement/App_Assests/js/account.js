@@ -44,6 +44,8 @@ $(document).on('click', '.UpdatePassword', function () {
         }
 
         if (IsValid) {
+            $(".UpdatePassword").attr("disabled", "disabed");
+            $(".UpdatePassword").text("loading...");
             var data = '{Password:"' + NewPassword + '"}';
             handleAjaxRequest(null, true, "/Method/UpdatePassword", data, "CallBackUpdatePassword", NewPassword);
         }
@@ -64,6 +66,8 @@ function CallBackUpdatePassword(responseData, NewPassword) {
     else {
 
     }
+    $(".UpdatePassword").removeAttr("disabled", "disabed");
+    $(".UpdatePassword").text("Reset Password");
 }
 
 $(document).on('click', '.UpdateProfileImage', function () {

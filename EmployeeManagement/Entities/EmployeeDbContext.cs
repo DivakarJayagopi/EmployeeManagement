@@ -18,6 +18,7 @@ namespace EmployeeManagement.Entities
         public DbSet<News> News { get; set; }
         public DbSet<NewsConnector> NewsConnector { get; set; }
         public DbSet<PaySlip> PaySlip { get; set; }
+        public DbSet<EmployeeSalaryInfo> EmployeeSalaryInfo { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Chats>().ToTable("Chats");
@@ -26,6 +27,7 @@ namespace EmployeeManagement.Entities
             modelBuilder.Entity<News>().ToTable("News");
             modelBuilder.Entity<NewsConnector>().ToTable("NewsConnector");
             modelBuilder.Entity<PaySlip>().ToTable("PaySlip");
+            modelBuilder.Entity<EmployeeSalaryInfo>().ToTable("EmployeeSalaryInfo");
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             base.OnModelCreating(modelBuilder);
         }

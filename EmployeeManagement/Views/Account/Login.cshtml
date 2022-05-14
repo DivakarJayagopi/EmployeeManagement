@@ -60,7 +60,7 @@
                                     </div>*@
                                     <span class="text-danger customErrorMessageLogin"></span>
                                     <div class="form-group">
-                                        <button type="button" class="btn btn-primary btn-lg btn-block" id="loginFormSubmit" tabindex="4">
+                                        <button type="button" class="btn btn-block btn-info" id="loginFormSubmit" tabindex="4">
                                             Login
                                         </button>
                                     </div>
@@ -88,7 +88,8 @@
     <!-- Page Specific JS File -->
     <script>
         $("#loginFormSubmit").click(function () {
-            $("#LoginFormSubmit").addClass("disabled");
+            $("#loginFormSubmit").attr("disabled", "disabed");
+            $("#loginFormSubmit").text("Validating...");
             $(".customErrorMessageLogin").text("");
             var email = $("#email").val();
             var Password = $("#Password").val();
@@ -115,7 +116,8 @@
                 window.location.href = "@Url.Action("index", "Dashboard")";
             }
             else {
-                $("#LoginFormSubmit").removeClass("btn-progress");
+                $("#loginFormSubmit").removeAttr("disabled");
+                $("#loginFormSubmit").text("Login");
                 var ErrorMessage = responseData.message.errorMessage;
                 if (typeof (ErrorMessage) != "undefined" && ErrorMessage != null && ErrorMessage != "") {
                     $(".customErrorMessageLogin").text(ErrorMessage);

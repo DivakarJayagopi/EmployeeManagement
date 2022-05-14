@@ -68,6 +68,10 @@ namespace EmployeeManagement.Utility
                     EmployeeInfo.Email = employee.Email;
                     EmployeeInfo.MobileNumber = employee.MobileNumber;
                     EmployeeInfo.Address = employee.Address;
+                    EmployeeInfo.Team = employee.Team;
+                    EmployeeInfo.Role = employee.Role;
+                    EmployeeInfo.IsAdmin = employee.IsAdmin;
+                    EmployeeInfo.ModifiedDate = DateTime.Now;
                     int count = _dbContext.SaveChanges();
                     status = count > -1;
                 }
@@ -129,6 +133,13 @@ namespace EmployeeManagement.Utility
                                 _dbContext.PaySlip.RemoveRange(PaySliplist);
                                 count = _dbContext.SaveChanges();
                                 status = count != -1;
+                                if (status)
+                                {
+                                    var EmployeeSalaryInfoList = _dbContext.EmployeeSalaryInfo.Where(x => x.EmployeeId == Id).ToList();
+                                    _dbContext.EmployeeSalaryInfo.RemoveRange(EmployeeSalaryInfoList);
+                                    count = _dbContext.SaveChanges();
+                                    status = count != -1;
+                                }
 
                             }
                         }

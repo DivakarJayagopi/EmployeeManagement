@@ -39,6 +39,8 @@ $(document).on('click', '.SelectMonth', function () {
     var SelectedDate = $(".LeaveRequestMonth").val();
     if (SelectedDate != "undefined" && SelectedDate != null && SelectedDate != "") {
         $(".LeaveRequestListBody").html("");
+        $(".SelectMonth").attr("disabled", "disabed");
+        $(".SelectMonth").text("Loading..");
         var data = '{SelectedDate:"' + SelectedDate + '"}';
         handleAjaxRequest(null, true, "/Method/GetLeaveRquestByDate", data, "CallBackGetLeaveRquestByDate");
     }
@@ -76,12 +78,13 @@ function CallBackGetLeaveRquestByDate(responseData) {
             RequestListHTML += "/<tr>";
         }
         $(".LeaveRequestListBody").html(RequestListHTML);
-        //$('#leaveRequestListTable').DataTable();
     }
     else {
 
     }
-    $("#leaveRequestList").show("hide");
+    $(".SelectMonth").removeAttr("disabled", "disabed");
+    $(".SelectMonth").text("Submit");
+    $("#leaveRequestList").show("");
 }
 
 $(document).on('change', '.FromDate', function () {
